@@ -155,15 +155,24 @@ body {
 }
 
 /* =========================================================================
-   ALL OTHER SECTIONS (#FBF5DE WARM CREAM CANVAS)
+   ALL OTHER SECTIONS (#FBF5DE WARM CREAM CANVAS WITH RED ENGINEERING GRID)
    ========================================================================= */
+main {
+  background-color: #FBF5DE !important;
+  background-image: 
+    linear-gradient(to right, rgba(220, 60, 34, 0.075) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 60, 34, 0.075) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(61, 116, 182, 0.08) 0%, transparent 65%) !important;
+  background-size: 36px 36px, 36px 36px, 100% 100% !important;
+  color: #0F172A;
+}
+
 #about,
 #services,
 #products,
 #freelance,
 .content-sections {
-  background-color: #FBF5DE !important;
-  color: #0F172A;
+  background-color: transparent !important;
 }
 
 /* =========================================================================
