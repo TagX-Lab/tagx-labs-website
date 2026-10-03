@@ -85,6 +85,42 @@ async function sha256Hex(message) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+// =========================================================================
+// OFFICIAL GOOGLE FORM CLOUD DATABASE BRIDGE (Zero-OAuth Real-Time Sync)
+// Form ID: 1FAIpQLScLMj-oVzDsMf4_De8f4K1xpPb7RXac2AAbCZZiArXsKv3Ggg
+// Connected to Official Database Google Sheet
+// =========================================================================
+const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScLMj-oVzDsMf4_De8f4K1xpPb7RXac2AAbCZZiArXsKv3Ggg/formResponse';
+const GOOGLE_FORM_ENTRY_NAME = 'entry.683735407';
+const GOOGLE_FORM_ENTRY_EMAIL = 'entry.1044320817';
+const GOOGLE_FORM_ENTRY_SERVICE = 'entry.308938277';
+const GOOGLE_FORM_ENTRY_BRIEF = 'entry.85843337';
+
+function syncToGoogleDatabase(data) {
+  try {
+    const formData = new URLSearchParams();
+    if (data.name) formData.append(GOOGLE_FORM_ENTRY_NAME, data.name);
+    if (data.email) formData.append(GOOGLE_FORM_ENTRY_EMAIL, data.email);
+    if (data.service) formData.append(GOOGLE_FORM_ENTRY_SERVICE, data.service);
+    if (data.brief) formData.append(GOOGLE_FORM_ENTRY_BRIEF, data.brief);
+
+    fetch(GOOGLE_FORM_ACTION_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData.toString()
+    }).then(() => {
+      console.log('[TAGX Database] Auto-recorded to Google Sheet database!');
+    }).catch(err => {
+      console.warn('[TAGX Database Sync Error]:', err);
+    });
+  } catch (err) {
+    console.warn('[TAGX Database Sync Exception]:', err);
+  }
+}
+
 // 1. Early Access & Product Launch Waitlist Handler (Persists to Local Storage with Security Shield)
 window.handleEarlyAccessSubmit = function (e) {
   e.preventDefault();
@@ -133,6 +169,14 @@ window.handleEarlyAccessSubmit = function (e) {
       localStorage.setItem('tagx_product_waitlist', JSON.stringify(list));
     }
   } catch (_) {}
+
+  // 100% Automatic Real-Time Cloud Sync to Official Google Sheet Database
+  syncToGoogleDatabase({
+    name: 'Product VIP Waitlist Subscriber',
+    email: email,
+    service: 'VIP Early Access 🚀',
+    brief: 'Auto-subscribed to Product VIP Early Access from TAGX Labs website.'
+  });
 
   // Optional Live Google Cloud Sheet Webhook Dispatch
   try {
@@ -227,6 +271,14 @@ window.handleContactSubmit = function (e) {
     });
     localStorage.setItem('tagx_inquiries', JSON.stringify(inquiries));
   } catch (_) {}
+
+  // 100% Automatic Real-Time Cloud Sync to Official Google Sheet Database
+  syncToGoogleDatabase({
+    name: name,
+    email: email,
+    service: projectType,
+    brief: message
+  });
 
   // Optional Live Google Cloud Sheet Webhook Dispatch
   try {
