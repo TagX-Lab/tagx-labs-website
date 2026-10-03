@@ -161,10 +161,56 @@ body {
 #services,
 #products,
 #freelance,
-footer,
 .content-sections {
   background-color: #FBF5DE !important;
   color: #0F172A;
+}
+
+/* =========================================================================
+   OFFICIAL BLUE FOOTER THEME (#3D74B6)
+   ========================================================================= */
+footer,
+.footer-blue {
+  background-color: #3D74B6 !important;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -20%, rgba(251, 245, 222, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(220, 60, 34, 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #3567a3 0%, #295386 50%, #1b385c 100%) !important;
+  color: #FBF5DE !important;
+  border-top: 1px solid rgba(251, 245, 222, 0.2) !important;
+}
+
+footer .font-display,
+footer h3,
+footer h4,
+footer .text-white {
+  color: #FFFFFF !important;
+}
+
+footer p,
+footer a,
+footer .text-slate-200,
+footer .text-slate-300 {
+  color: #E2E8F0 !important;
+}
+
+footer a:hover {
+  color: #EAC8A6 !important;
+}
+
+footer .border-white\/15,
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+footer .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+footer .bg-white\/10:hover {
+  background-color: rgba(255, 255, 255, 0.22) !important;
+  color: #EAC8A6 !important;
 }
 
 /* Typography Helpers */
