@@ -235,6 +235,7 @@ window.handleContactSubmit = function (e) {
   }
 
   const nameEl = document.getElementById('client-name');
+  const phoneEl = document.getElementById('client-phone');
   const emailEl = document.getElementById('client-email');
   const descEl = document.getElementById('project-desc');
   
@@ -244,12 +245,23 @@ window.handleContactSubmit = function (e) {
   const projectType = selectedServices.length > 0 ? selectedServices.join(', ') : 'Custom Systems & AI Solutions';
 
   const name = sanitizeInput(nameEl ? nameEl.value : '', 80) || 'Partner';
+  const phone = sanitizeInput(phoneEl ? phoneEl.value : '', 40);
   const email = sanitizeInput(emailEl ? emailEl.value : '', 120);
   const message = sanitizeInput(descEl ? descEl.value : '', 2000);
 
+  // Validate mandatory mobile / WhatsApp number
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+  if (!phone || cleanPhone.length < 7) {
+    window.showToast('⚠️ Please enter a valid mobile / WhatsApp number.', 'error');
+    if (phoneEl) phoneEl.focus();
+    return;
+  }
+
+  // Validate email address
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailRegex.test(email)) {
     window.showToast('⚠️ Please enter a valid email address.', 'error');
+    if (emailEl) emailEl.focus();
     return;
   }
 
@@ -267,6 +279,7 @@ window.handleContactSubmit = function (e) {
     inquiries.unshift({
       id: 'TX-' + Math.floor(1000 + Math.random() * 9000),
       name: name,
+      phone: phone,
       email: email,
       projectType: projectType,
       message: message,
@@ -277,10 +290,10 @@ window.handleContactSubmit = function (e) {
 
   // 100% Automatic Real-Time Cloud Sync to Official Google Sheet Database
   syncToGoogleDatabase({
-    name: name,
+    name: `${name} [📱 ${phone}]`,
     email: email,
     service: projectType,
-    brief: message
+    brief: `[📱 Contact Phone: ${phone}]\n\n${message}`
   });
 
   // Optional Live Google Cloud Sheet Webhook Dispatch
@@ -294,6 +307,7 @@ window.handleContactSubmit = function (e) {
         body: JSON.stringify({
           type: 'inquiry',
           name: name,
+          phone: phone,
           email: email,
           projectType: projectType,
           message: message,
@@ -537,7 +551,10 @@ window.renderVaultDashboard = function () {
       inqBody.innerHTML = inquiries.map((item, idx) => `
         <tr class="hover:bg-white/[0.03] transition-colors">
           <td class="p-3.5 text-slate-400 text-[11px]">${item.date || 'N/A'}</td>
-          <td class="p-3.5 font-bold text-white">${escapeHtml(item.name || 'Anonymous')}</td>
+          <td class="p-3.5">
+            <div class="font-bold text-white">${escapeHtml(item.name || 'Anonymous')}</div>
+            ${item.phone ? `<a href="tel:${escapeHtml(item.phone)}" class="text-[11px] text-tagx-gold font-mono flex items-center gap-1 mt-0.5 hover:underline" title="Call / WhatsApp"><i data-lucide="phone" class="w-3 h-3"></i><span>${escapeHtml(item.phone)}</span></a>` : ''}
+          </td>
           <td class="p-3.5 text-tagx-teal">
             <a href="mailto:${escapeHtml(item.email)}" class="hover:underline flex items-center gap-1.5">
               <span>${escapeHtml(item.email)}</span>
@@ -668,7 +685,7 @@ window.copyDataForGoogleSheet = function () {
 
   const rows = [];
   // TSV Header row for direct Google Sheet Cell A1 pasting
-  rows.push(['Timestamp', 'Record Type', 'Client / Partner Name', 'Work Email', 'Service / Tier', 'Timeline / Urgency', 'Project Scope / Message', 'Status'].join('\t'));
+  rows.push(['Timestamp', 'Record Type', 'Client / Partner Name', 'Mobile / WhatsApp', 'Work Email', 'Service / Tier', 'Project Scope / Message', 'Status'].join('\t'));
 
   // Inquiries rows
   inquiries.forEach((item, idx) => {
@@ -676,9 +693,9 @@ window.copyDataForGoogleSheet = function () {
       item.date || new Date().toLocaleString(),
       'Client Inquiry',
       item.name || 'Anonymous',
+      item.phone || 'N/A',
       item.email || '',
       item.projectType || 'Software Engineering',
-      item.timeline || 'Flexible Timeline',
       (item.message || '').replace(/[\r\n\t]+/g, ' '),
       'New'
     ].join('\t'));
@@ -733,7 +750,7 @@ window.copyDataForGoogleSheet = function () {
 
 // Copy Sheet 1 Headers for Client Inquiries
 window.copySheet1Headers = function () {
-  const headers = ['Timestamp', 'Inquiry ID', 'Client / Company Name', 'Work Email', 'Service Requested', 'Timeline / Urgency', 'Project Brief / Scope', 'Estimated Budget', 'Inquiry Status', 'Founder Notes'].join('\t');
+  const headers = ['Timestamp', 'Inquiry ID', 'Client / Company Name', 'Mobile / WhatsApp', 'Work Email', 'Service Requested', 'Project Brief / Scope', 'Estimated Budget', 'Inquiry Status', 'Founder Notes'].join('\t');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(headers).then(() => {
       window.showToast('✔ Sheet 1 (Client Inquiries) headers copied! Paste into Cell A1 of Sheet 1.', 'success');
@@ -777,15 +794,15 @@ window.exportInquiriesToCSV = function () {
     return;
   }
 
-  let csvContent = 'ID,Timestamp,Client Name,Work Email,Services Requested,Timeline / Urgency,Project Overview\n';
+  let csvContent = 'ID,Timestamp,Client Name,Mobile / WhatsApp,Work Email,Services Requested,Project Overview\n';
   inquiries.forEach(item => {
     const row = [
       escapeCSV(item.id || 'TX-0000'),
       escapeCSV(item.date || ''),
       escapeCSV(item.name || ''),
+      escapeCSV(item.phone || ''),
       escapeCSV(item.email || ''),
       escapeCSV(item.projectType || ''),
-      escapeCSV(item.timeline || ''),
       escapeCSV(item.message || '')
     ].join(',');
     csvContent += row + '\n';
@@ -873,27 +890,27 @@ window.seedSampleVaultData = function () {
     {
       id: 'TX-7801',
       name: 'Sarah Chen (Aero Dynamics)',
+      phone: '+1 (415) 890-2341',
       email: 'sarah.chen@aerodynamics.io',
       projectType: 'Websites & 3D Web Apps',
-      timeline: 'Urgent (< 2 Weeks)',
       message: 'Need a high-performance 3D WebGL interactive landing experience for our aerospace SaaS launch.',
       date: new Date(Date.now() - 3600000 * 4).toLocaleString()
     },
     {
       id: 'TX-8924',
       name: 'Marcus Vance (Quantum CLI)',
+      phone: '+44 7911 123456',
       email: 'marcus@quantumcore.dev',
       projectType: 'Desktop & Laptop Softwares',
-      timeline: '1 - 2 Months',
       message: 'Looking for a native offline Windows & Mac desktop developer tool with SQLite and zero telemetry.',
       date: new Date(Date.now() - 3600000 * 24).toLocaleString()
     },
     {
       id: 'TX-9102',
       name: 'Devin Thorne (FinPulse)',
+      phone: '+91 98450 12345',
       email: 'devin@finpulse.app',
-      projectType: 'Mobile Apps (iOS & Android), Custom Systems & AI',
-      timeline: 'Flexible Timeline',
+      projectType: 'Mobile Apps (iOS & Android), Custom Systems & AI Solutions',
       message: 'Need a 120 FPS Flutter mobile app for iOS and Android with biometric auth and real-time websockets.',
       date: new Date(Date.now() - 3600000 * 48).toLocaleString()
     }

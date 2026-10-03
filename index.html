@@ -684,6 +684,20 @@
               <input type="text" id="client-name" required placeholder="e.g. Alex Rivera, Acme Systems" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-tagx-teal transition-colors">
             </div>
 
+            <!-- Mobile / WhatsApp Number (Mandatory) -->
+            <div>
+              <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold flex items-center justify-between" for="client-phone">
+                <span>Mobile / WhatsApp Number <span class="text-tagx-rose">*</span></span>
+                <span class="text-[10px] text-tagx-gold font-normal">Mandatory</span>
+              </label>
+              <div class="relative">
+                <input type="tel" id="client-phone" required placeholder="e.g. +91 98765 43210" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-tagx-teal transition-colors">
+                <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                  <i data-lucide="phone" class="w-4 h-4 text-tagx-gold"></i>
+                </div>
+              </div>
+            </div>
+
             <div>
               <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold" for="client-email">Work Email</label>
               <input type="email" id="client-email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-tagx-teal transition-colors">
