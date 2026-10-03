@@ -80,10 +80,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8fafc !important;
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(20, 177, 171, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 90% 40%, rgba(232, 80, 91, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 10% 70%, rgba(20, 177, 171, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(249, 213, 110, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(20, 177, 171, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(232, 80, 91, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(20, 177, 171, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 55% at 90% 85%, rgba(232, 80, 91, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(249, 213, 110, 0.12) 0%, transparent 60%),
     linear-gradient(180deg, #f8fafc 0%, #f1f5f9 35%, #e2e8f0 70%, #f8fafc 100%) !important;
   background-attachment: fixed;
   color: #0f172a !important;
@@ -141,26 +142,26 @@ body {
 .aurora-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(120px);
+  filter: blur(110px);
   pointer-events: none;
   mix-blend-mode: multiply;
-  opacity: 0.28;
+  opacity: 0.46;
 }
 
 .aurora-orb-teal {
-  width: 700px;
-  height: 700px;
+  width: 780px;
+  height: 780px;
   top: -150px;
   left: -150px;
-  background: radial-gradient(circle, rgba(20, 177, 171, 0.38) 0%, rgba(30, 205, 198, 0.22) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(20, 177, 171, 0.52) 0%, rgba(30, 205, 198, 0.32) 40%, transparent 70%);
 }
 
 .aurora-orb-rose {
-  width: 750px;
-  height: 750px;
+  width: 820px;
+  height: 820px;
   top: 25%;
   right: -200px;
-  background: radial-gradient(circle, rgba(232, 80, 91, 0.32) 0%, rgba(250, 105, 115, 0.18) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 80, 91, 0.46) 0%, rgba(250, 105, 115, 0.28) 45%, transparent 70%);
 }
 
 .aurora-orb-gold {
