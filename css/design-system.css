@@ -71,27 +71,100 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
   font-family: var(--font-sans);
-  background-color: #3D74B6;
-  color: var(--text-primary);
+  background-color: #FBF5DE;
+  color: #0F172A;
 }
 
 body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #3D74B6 !important;
+  background-color: #FBF5DE !important;
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(251, 245, 222, 0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(234, 200, 166, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(220, 60, 34, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(234, 200, 166, 0.20) 0%, transparent 60%),
-    linear-gradient(180deg, #3D74B6 0%, #305f97 35%, #254b79 70%, #1b385c 100%) !important;
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(61, 116, 182, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(234, 200, 166, 0.20) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(220, 60, 34, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(234, 200, 166, 0.16) 0%, transparent 60%) !important;
   background-attachment: fixed;
-  color: #FBF5DE !important;
+  color: #0F172A !important;
   min-height: 100vh;
   position: relative;
+}
+
+/* =========================================================================
+   EXCLUSIVE BLUE LANDING PAGE / HERO SECTION (#3D74B6)
+   ========================================================================= */
+#hero {
+  background-color: #3D74B6 !important;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(251, 245, 222, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(234, 200, 166, 0.24) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(220, 60, 34, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(234, 200, 166, 0.20) 0%, transparent 60%),
+    linear-gradient(180deg, #3D74B6 0%, #305f97 35%, #254b79 70%, #1b385c 100%) !important;
+  color: #FBF5DE !important;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero .text-hero-title-main {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+}
+
+#hero .text-hero-title-gradient {
+  color: #FBF5DE !important;
+  background: linear-gradient(90deg, #FFFFFF 0%, #FBF5DE 30%, #EAC8A6 65%, #DC3C22 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#hero .text-white,
+#hero span.text-white,
+#hero h1,
+#hero h2,
+#hero h3,
+#hero h4 {
+  color: #FFFFFF !important;
+}
+
+#hero .text-slate-200,
+#hero .text-slate-300 {
+  color: #E2E8F0 !important;
+}
+
+#hero .glass-card {
+  background: rgba(14, 27, 47, 0.85) !important;
+  border-color: rgba(251, 245, 222, 0.15) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
+}
+
+#hero .glass-card .font-display {
+  color: #FBF5DE !important;
+}
+
+#hero .glass-card .text-slate-300 {
+  color: #E2E8F0 !important;
+}
+
+#hero a.glass-card {
+  background: rgba(14, 27, 47, 0.85) !important;
+  color: #FFFFFF !important;
+}
+
+/* =========================================================================
+   ALL OTHER SECTIONS (#FBF5DE WARM CREAM CANVAS)
+   ========================================================================= */
+#about,
+#services,
+#products,
+#freelance,
+footer,
+.content-sections {
+  background-color: #FBF5DE !important;
+  color: #0F172A;
 }
 
 /* Typography Helpers */
