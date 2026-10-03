@@ -552,8 +552,8 @@ window.renderVaultDashboard = function () {
 };
 
 // Official Google Cloud Sheet Integration for Secret Vault
-const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing';
-const GOOGLE_SHEET_ID = '15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw';
+const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AxTVMilf42lJ0nJUiV9EATb1ldwST0R2LdLfGG4UBpE/edit?usp=sharing';
+const GOOGLE_SHEET_ID = '1AxTVMilf42lJ0nJUiV9EATb1ldwST0R2LdLfGG4UBpE';
 
 // Tab Switching inside Vault
 window.switchVaultTab = function (tabName) {

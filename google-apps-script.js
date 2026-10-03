@@ -2,11 +2,11 @@
  * =========================================================================
  * TAGX Labs™ — Google Sheets Cloud Backend Automation Script
  * Spreadsheet: "TagX informachions from web site"
- * ID: 15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw
+ * ID: 1AxTVMilf42lJ0nJUiV9EATb1ldwST0R2LdLfGG4UBpE
  * =========================================================================
  * 
  * INSTRUCTIONS TO DEPLOY (Takes 1 minute):
- * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit
+ * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1AxTVMilf42lJ0nJUiV9EATb1ldwST0R2LdLfGG4UBpE/edit
  * 2. In the top menu, click: Extensions > Apps Script
  * 3. Delete any default code in Code.gs and PASTE ALL THIS CODE.
  * 4. Select function "setupTagXSheet" from the top dropdown and click "Run".
