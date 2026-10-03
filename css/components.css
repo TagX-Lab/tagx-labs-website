@@ -2,9 +2,10 @@
    TAGX Labs™ — Component System
    Tailored layout components, Bento grids, Floating Navbar, Download Hub,
    Terminal, and Modals based on the official TAGX Brand Palette:
-   - #14B1AB (Ocean Cyan Teal)
-   - #F3ECC2 (Cream Sand White)
-   - #E8505B (Coral Crimson Red)
+   - #3D74B6 (Royal Ocean Blue)
+   - #FBF5DE (Warm Ivory Cream)
+   - #EAC8A6 (Warm Sand Tan Almond)
+   - #DC3C22 (Vibrant Terracotta Crimson)
    Default: Studio Grade Modern Light Mode (Linear / Stripe / Apple 2026 Style)
    ========================================================================== */
 
@@ -309,23 +310,23 @@
 .border-t { border-top-width: 1px; }
 .border-b { border-bottom-width: 1px; }
 
-.border-tagx-teal { border-color: rgba(20, 177, 171, 0.45); }
-.border-tagx-teal\/30 { border-color: rgba(20, 177, 171, 0.3); }
-.border-tagx-teal\/40 { border-color: rgba(20, 177, 171, 0.4); }
-.border-tagx-teal\/50 { border-color: rgba(20, 177, 171, 0.5); }
-.border-tagx-rose { border-color: rgba(232, 80, 91, 0.45); }
-.border-tagx-rose\/40 { border-color: rgba(232, 80, 91, 0.4); }
-.border-tagx-gold { border-color: rgba(249, 213, 110, 0.45); }
-.border-tagx-gold\/40 { border-color: rgba(249, 213, 110, 0.4); }
-.border-tagx-cream { border-color: rgba(243, 236, 194, 0.35); }
-.border-tagx-mint\/40 { border-color: rgba(20, 177, 171, 0.4); }
+.border-tagx-teal { border-color: rgba(61, 116, 182, 0.45); }
+.border-tagx-teal\/30 { border-color: rgba(61, 116, 182, 0.3); }
+.border-tagx-teal\/40 { border-color: rgba(61, 116, 182, 0.4); }
+.border-tagx-teal\/50 { border-color: rgba(61, 116, 182, 0.5); }
+.border-tagx-rose { border-color: rgba(220, 60, 34, 0.45); }
+.border-tagx-rose\/40 { border-color: rgba(220, 60, 34, 0.4); }
+.border-tagx-gold { border-color: rgba(234, 200, 166, 0.6); }
+.border-tagx-gold\/40 { border-color: rgba(234, 200, 166, 0.4); }
+.border-tagx-cream { border-color: rgba(251, 245, 222, 0.45); }
+.border-tagx-mint\/40 { border-color: rgba(61, 116, 182, 0.4); }
 
 .divide-y > * + * { border-top-width: 1px; }
 
 /* Palette Colors */
-.text-tagx-teal { color: #14B1AB !important; }
-.text-tagx-rose { color: #E8505B !important; }
-.text-tagx-mint { color: #14B1AB !important; }
+.text-tagx-teal { color: #3D74B6 !important; }
+.text-tagx-rose { color: #DC3C22 !important; }
+.text-tagx-mint { color: #3D74B6 !important; }
 
 .text-\[10px\] { font-size: 10px; }
 .text-\[11px\] { font-size: 11px; }
@@ -353,19 +354,19 @@
 .text-right { text-align: right; }
 
 /* TAGX Tint Backgrounds */
-.bg-tagx-teal\/10 { background-color: rgba(20, 177, 171, 0.1); }
-.bg-tagx-teal\/15 { background-color: rgba(20, 177, 171, 0.15); }
-.bg-tagx-teal\/20 { background-color: rgba(20, 177, 171, 0.2); }
-.bg-tagx-teal\/25 { background-color: rgba(20, 177, 171, 0.25); }
-.bg-tagx-teal\/30 { background-color: rgba(20, 177, 171, 0.3); }
-.bg-tagx-rose\/10 { background-color: rgba(232, 80, 91, 0.1); }
-.bg-tagx-rose\/15 { background-color: rgba(232, 80, 91, 0.15); }
-.bg-tagx-rose\/20 { background-color: rgba(232, 80, 91, 0.2); }
-.bg-tagx-rose\/25 { background-color: rgba(232, 80, 91, 0.25); }
-.bg-tagx-gold\/10 { background-color: rgba(249, 213, 110, 0.1); }
-.bg-tagx-gold\/15 { background-color: rgba(249, 213, 110, 0.15); }
-.bg-tagx-gold\/20 { background-color: rgba(249, 213, 110, 0.2); }
-.bg-tagx-mint\/15 { background-color: rgba(20, 177, 171, 0.15); }
+.bg-tagx-teal\/10 { background-color: rgba(61, 116, 182, 0.1); }
+.bg-tagx-teal\/15 { background-color: rgba(61, 116, 182, 0.15); }
+.bg-tagx-teal\/20 { background-color: rgba(61, 116, 182, 0.2); }
+.bg-tagx-teal\/25 { background-color: rgba(61, 116, 182, 0.25); }
+.bg-tagx-teal\/30 { background-color: rgba(61, 116, 182, 0.3); }
+.bg-tagx-rose\/10 { background-color: rgba(220, 60, 34, 0.1); }
+.bg-tagx-rose\/15 { background-color: rgba(220, 60, 34, 0.15); }
+.bg-tagx-rose\/20 { background-color: rgba(220, 60, 34, 0.2); }
+.bg-tagx-rose\/25 { background-color: rgba(220, 60, 34, 0.25); }
+.bg-tagx-gold\/10 { background-color: rgba(234, 200, 166, 0.2); }
+.bg-tagx-gold\/15 { background-color: rgba(234, 200, 166, 0.3); }
+.bg-tagx-gold\/20 { background-color: rgba(234, 200, 166, 0.4); }
+.bg-tagx-mint\/15 { background-color: rgba(61, 116, 182, 0.15); }
 
 .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
 .text-transparent { color: transparent !important; }
@@ -374,28 +375,28 @@
 .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
 
 /* Signature Gradients */
-.from-tagx-teal { --tw-gradient-stops: #14B1AB, var(--tw-gradient-to, rgba(20, 177, 171, 0)); }
-.from-tagx-cream { --tw-gradient-stops: #F3ECC2, var(--tw-gradient-to, rgba(243, 236, 194, 0)); }
-.from-tagx-rose { --tw-gradient-stops: #E8505B, var(--tw-gradient-to, rgba(232, 80, 91, 0)); }
-.from-tagx-gold { --tw-gradient-stops: #F9D56E, var(--tw-gradient-to, rgba(249, 213, 110, 0)); }
-.from-tagx-mint { --tw-gradient-stops: #14B1AB, var(--tw-gradient-to, rgba(20, 177, 171, 0)); }
-.from-tagx-teal\/20 { --tw-gradient-stops: rgba(20, 177, 171, 0.2), var(--tw-gradient-to, rgba(20, 177, 171, 0)); }
-.from-tagx-rose\/20 { --tw-gradient-stops: rgba(232, 80, 91, 0.2), var(--tw-gradient-to, rgba(232, 80, 91, 0)); }
-.from-tagx-gold\/20 { --tw-gradient-stops: rgba(249, 213, 110, 0.2), var(--tw-gradient-to, rgba(249, 213, 110, 0)); }
-.via-tagx-rose { --tw-gradient-stops: var(--tw-gradient-from, #14B1AB), #E8505B, var(--tw-gradient-to, rgba(232, 80, 91, 0)); }
-.via-tagx-gold { --tw-gradient-stops: var(--tw-gradient-from, #14B1AB), #F9D56E, var(--tw-gradient-to, rgba(249, 213, 110, 0)); }
-.via-tagx-teal { --tw-gradient-stops: var(--tw-gradient-from, #14B1AB), #14B1AB, var(--tw-gradient-to, rgba(20, 177, 171, 0)); }
-.via-tagx-rose\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(20, 177, 171, 0.2)), rgba(232, 80, 91, 0.15), var(--tw-gradient-to, rgba(232, 80, 91, 0)); }
-.via-tagx-gold\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(20, 177, 171, 0.2)), rgba(249, 213, 110, 0.15), var(--tw-gradient-to, rgba(249, 213, 110, 0)); }
-.via-tagx-teal\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(249, 213, 110, 0.2)), rgba(20, 177, 171, 0.15), var(--tw-gradient-to, rgba(20, 177, 171, 0)); }
-.to-tagx-gold { --tw-gradient-to: #F9D56E; }
-.to-tagx-gold\/15 { --tw-gradient-to: rgba(249, 213, 110, 0.15); }
-.to-tagx-gold\/20 { --tw-gradient-to: rgba(249, 213, 110, 0.2); }
-.to-tagx-rose { --tw-gradient-to: #E8505B; }
-.to-tagx-rose\/15 { --tw-gradient-to: rgba(232, 80, 91, 0.15); }
-.to-tagx-teal { --tw-gradient-to: #14B1AB; }
-.to-tagx-teal\/20 { --tw-gradient-to: rgba(20, 177, 171, 0.2); }
-.to-tagx-cream { --tw-gradient-to: #F3ECC2; }
+.from-tagx-teal { --tw-gradient-stops: #3D74B6, var(--tw-gradient-to, rgba(61, 116, 182, 0)); }
+.from-tagx-cream { --tw-gradient-stops: #FBF5DE, var(--tw-gradient-to, rgba(251, 245, 222, 0)); }
+.from-tagx-rose { --tw-gradient-stops: #DC3C22, var(--tw-gradient-to, rgba(220, 60, 34, 0)); }
+.from-tagx-gold { --tw-gradient-stops: #EAC8A6, var(--tw-gradient-to, rgba(234, 200, 166, 0)); }
+.from-tagx-mint { --tw-gradient-stops: #3D74B6, var(--tw-gradient-to, rgba(61, 116, 182, 0)); }
+.from-tagx-teal\/20 { --tw-gradient-stops: rgba(61, 116, 182, 0.2), var(--tw-gradient-to, rgba(61, 116, 182, 0)); }
+.from-tagx-rose\/20 { --tw-gradient-stops: rgba(220, 60, 34, 0.2), var(--tw-gradient-to, rgba(220, 60, 34, 0)); }
+.from-tagx-gold\/20 { --tw-gradient-stops: rgba(234, 200, 166, 0.3), var(--tw-gradient-to, rgba(234, 200, 166, 0)); }
+.via-tagx-rose { --tw-gradient-stops: var(--tw-gradient-from, #3D74B6), #DC3C22, var(--tw-gradient-to, rgba(220, 60, 34, 0)); }
+.via-tagx-gold { --tw-gradient-stops: var(--tw-gradient-from, #3D74B6), #EAC8A6, var(--tw-gradient-to, rgba(234, 200, 166, 0)); }
+.via-tagx-teal { --tw-gradient-stops: var(--tw-gradient-from, #3D74B6), #3D74B6, var(--tw-gradient-to, rgba(61, 116, 182, 0)); }
+.via-tagx-rose\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(61, 116, 182, 0.2)), rgba(220, 60, 34, 0.15), var(--tw-gradient-to, rgba(220, 60, 34, 0)); }
+.via-tagx-gold\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(61, 116, 182, 0.2)), rgba(234, 200, 166, 0.25), var(--tw-gradient-to, rgba(234, 200, 166, 0)); }
+.via-tagx-teal\/15 { --tw-gradient-stops: var(--tw-gradient-from, rgba(234, 200, 166, 0.3)), rgba(61, 116, 182, 0.15), var(--tw-gradient-to, rgba(61, 116, 182, 0)); }
+.to-tagx-gold { --tw-gradient-to: #EAC8A6; }
+.to-tagx-gold\/15 { --tw-gradient-to: rgba(234, 200, 166, 0.2); }
+.to-tagx-gold\/20 { --tw-gradient-to: rgba(234, 200, 166, 0.3); }
+.to-tagx-rose { --tw-gradient-to: #DC3C22; }
+.to-tagx-rose\/15 { --tw-gradient-to: rgba(220, 60, 34, 0.15); }
+.to-tagx-teal { --tw-gradient-to: #3D74B6; }
+.to-tagx-teal\/20 { --tw-gradient-to: rgba(61, 116, 182, 0.2); }
+.to-tagx-cream { --tw-gradient-to: #FBF5DE; }
 
 /* Blurs & Shadows */
 .blur-md { filter: blur(12px); }
@@ -421,8 +422,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .group:hover .group-hover\:translate-x-1 { transform: translateX(0.25rem); }
 .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
 .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
-.group:hover .group-hover\:text-tagx-teal { color: #14B1AB !important; }
-.group:hover .group-hover\:text-tagx-rose { color: #E8505B !important; }
+.group:hover .group-hover\:text-tagx-teal { color: #3D74B6 !important; }
+.group:hover .group-hover\:text-tagx-rose { color: #DC3C22 !important; }
 
 /* Brand Logo Badge (Always Sharp Dark Center) */
 .brand-logo-center {
@@ -456,11 +457,11 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .text-tagx-cream {
-  color: #B45309 !important;
+  color: #9E5E26 !important;
 }
 
 .text-tagx-gold {
-  color: #D97706 !important;
+  color: #A86524 !important;
 }
 
 .text-tagx-light {
@@ -473,7 +474,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
   border: 1px solid rgba(15, 23, 42, 0.09) !important;
@@ -489,8 +490,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .glass-card:hover {
-  border-color: rgba(20, 177, 171, 0.55) !important;
-  box-shadow: 0 20px 35px -10px rgba(20, 177, 171, 0.18), 0 0 25px rgba(20, 177, 171, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 1) !important;
+  border-color: rgba(61, 116, 182, 0.55) !important;
+  box-shadow: 0 20px 35px -10px rgba(61, 116, 182, 0.18), 0 0 25px rgba(61, 116, 182, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 1) !important;
 }
 
 .bg-slate-950,
@@ -556,7 +557,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .group:hover .group-hover\:text-tagx-gold {
-  color: #D97706 !important;
+  color: #A86524 !important;
 }
 
 /* Form Controls */
@@ -577,8 +578,8 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #14B1AB !important;
-  box-shadow: 0 0 0 3px rgba(20, 177, 171, 0.15) !important;
+  border-color: #3D74B6 !important;
+  box-shadow: 0 0 0 3px rgba(61, 116, 182, 0.18) !important;
 }
 
 /* Modals & Dialogs */
@@ -591,7 +592,7 @@ textarea:focus {
 #vault-dashboard-view,
 #cmd-modal .glass-card {
   background-color: #ffffff !important;
-  border-color: rgba(20, 177, 171, 0.35) !important;
+  border-color: rgba(61, 116, 182, 0.35) !important;
   box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.25) !important;
 }
 
@@ -602,17 +603,17 @@ table thead {
 }
 
 table tbody tr:hover {
-  background-color: rgba(20, 177, 171, 0.06) !important;
+  background-color: rgba(61, 116, 182, 0.08) !important;
 }
 
 /* Toasts */
 .toast-item {
   background: rgba(255, 255, 255, 0.96) !important;
-  border: 1px solid rgba(20, 177, 171, 0.4) !important;
+  border: 1px solid rgba(61, 116, 182, 0.4) !important;
   backdrop-filter: blur(16px) !important;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), 0 0 15px rgba(20, 177, 171, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), 0 0 15px rgba(61, 116, 182, 0.15) !important;
   font-size: 0.75rem;
   font-family: var(--font-mono);
   color: #0F172A !important;
@@ -628,13 +629,13 @@ table tbody tr:hover {
    ========================================================================== */
 .terminal-card {
   background: #060e0d !important;
-  border-color: rgba(20, 177, 171, 0.3) !important;
-  color: #F3ECC2 !important;
+  border-color: rgba(61, 116, 182, 0.35) !important;
+  color: #FBF5DE !important;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4) !important;
 }
 
 .terminal-card .text-white {
-  color: #F3ECC2 !important;
+  color: #FBF5DE !important;
 }
 
 .terminal-card .text-slate-200,
@@ -648,5 +649,5 @@ table tbody tr:hover {
 
 .terminal-card .border-white\/10,
 .terminal-card .border-white\/15 {
-  border-color: rgba(243, 236, 194, 0.1) !important;
+  border-color: rgba(251, 245, 222, 0.12) !important;
 }

@@ -2,7 +2,7 @@
  * TAGX Labs™ — Interactive Experience Module
  * Command Palette (⌘K), Early Access Waitlist Engine, Contact Submissions,
  * Secret Executive Vault (6-Click Trigger), and 1-Click Excel / CSV Exporter Engine
- * Styled with the Official TAGX Brand Palette (#14B1AB, #F3ECC2, #E8505B, #F9D56E)
+ * Styled with the Official TAGX Brand Palette (#3D74B6, #FBF5DE, #EAC8A6, #DC3C22)
  */
 
 // Global Toast System

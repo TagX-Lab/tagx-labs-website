@@ -58,15 +58,15 @@
   const ambientLight = new THREE.AmbientLight(0x060f11, 2.8);
   scene.add(ambientLight);
 
-  const pointLight1 = new THREE.PointLight(0x14B1AB, 5.5, 100); // Ocean Cyan Teal
+  const pointLight1 = new THREE.PointLight(0x3D74B6, 5.5, 100); // Royal Ocean Blue (#3D74B6)
   pointLight1.position.set(22, 16, 20);
   scene.add(pointLight1);
 
-  const pointLight2 = new THREE.PointLight(0xE8505B, 5.0, 80); // Coral Crimson Red
+  const pointLight2 = new THREE.PointLight(0xDC3C22, 5.0, 80); // Terracotta Crimson Red (#DC3C22)
   pointLight2.position.set(-22, -14, 16);
   scene.add(pointLight2);
 
-  const topGlowLight = new THREE.PointLight(0xF9D56E, 3.8, 70); // Golden Yellow Sun
+  const topGlowLight = new THREE.PointLight(0xEAC8A6, 3.8, 70); // Warm Sand Almond Tan (#EAC8A6)
   topGlowLight.position.set(0, 26, 12);
   scene.add(topGlowLight);
 
@@ -181,7 +181,7 @@
     hCtx.fillText('TAGX CYBER TERMINAL v2.6 // ROOT PRIVILEGES ACTIVE', 92, 42);
 
     // Live Telemetry in Header
-    hCtx.fillStyle = '#14B1AB';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.font = '11px "JetBrains Mono", monospace';
     hCtx.fillText('CPU: 98.4% | MEM: 14.2GB | AES-GCM-256', hackerCanvas.width - 320, 42);
 
@@ -297,7 +297,7 @@
     ];
 
     hexRows.forEach((row, idx) => {
-      hCtx.fillStyle = (idx === 1 || idx === 3) ? '#F9D56E' : '#38EF7D';
+      hCtx.fillStyle = (idx === 1 || idx === 3) ? '#EAC8A6' : '#38EF7D';
       hCtx.fillText(row, rightX + 14, 276 + idx * 22);
     });
 
@@ -337,9 +337,9 @@
     hCtx.fillText('SECURITY STATUS', rightX + 145, 480);
     hCtx.fillStyle = '#E8FFE8';
     hCtx.fillText('STATUS: LOCKED', rightX + 145, 502);
-    hCtx.fillStyle = '#14B1AB';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.fillText('NODES: ACTIVE', rightX + 145, 524);
-    hCtx.fillStyle = '#F9D56E';
+    hCtx.fillStyle = '#EAC8A6';
     hCtx.fillText('ZERO EXPLOITS', rightX + 145, 546);
 
     // Scanline CRT Effect
@@ -478,7 +478,7 @@
     new THREE.Vector3(-2.1, 0, 1.4),
     new THREE.Vector3(-2.1, 0, -1.4),
   ]);
-  const tpOutlineMat = new THREE.LineBasicMaterial({ color: 0x14B1AB, transparent: true, opacity: 0.6 });
+  const tpOutlineMat = new THREE.LineBasicMaterial({ color: 0x3D74B6, transparent: true, opacity: 0.6 });
   const tpOutline = new THREE.Line(tpOutlineGeo, tpOutlineMat);
   tpOutline.position.set(0, baseHeight / 2 + 0.02, 3.2);
   laptopGroup.add(tpOutline);
@@ -534,9 +534,9 @@
     lCtx.clearRect(0, 0, 256, 256);
 
     const grad = lCtx.createLinearGradient(0, 0, 256, 256);
-    grad.addColorStop(0, '#14B1AB');
-    grad.addColorStop(0.5, '#E8505B');
-    grad.addColorStop(1, '#F9D56E');
+    grad.addColorStop(0, '#3D74B6');
+    grad.addColorStop(0.5, '#DC3C22');
+    grad.addColorStop(1, '#EAC8A6');
 
     lCtx.fillStyle = grad;
     lCtx.font = '900 110px "Space Grotesk", sans-serif';
@@ -568,11 +568,11 @@
   const particleOriginalZ = new Float32Array(particleCount);
 
   const brandColors = [
-    new THREE.Color(0x14B1AB), // Vibrant Ocean Teal
-    new THREE.Color(0xE8505B), // Electric Crimson Rose
-    new THREE.Color(0xF9D56E), // Golden Sun Yellow
+    new THREE.Color(0x3D74B6), // Royal Ocean Blue (#3D74B6)
+    new THREE.Color(0xDC3C22), // Terracotta Crimson Red (#DC3C22)
+    new THREE.Color(0xEAC8A6), // Warm Sand Almond Tan (#EAC8A6)
     new THREE.Color(0x00FF88), // Electric Neon Matrix Green
-    new THREE.Color(0xF3ECC2), // Warm Cream White
+    new THREE.Color(0xFBF5DE), // Warm Ivory Cream (#FBF5DE)
   ];
 
   for (let i = 0; i < particleCount; i++) {

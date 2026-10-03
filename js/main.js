@@ -13,8 +13,8 @@ try {
 // =========================================================================
 (function initDevToolsShield() {
   if (typeof console !== 'undefined' && console.log) {
-    const alertStyle = 'color: #ffffff; background-color: #E8505B; font-size: 22px; font-weight: 900; padding: 6px 14px; border-radius: 6px; font-family: monospace;';
-    const textStyle = 'color: #14B1AB; font-size: 12px; font-family: monospace; font-weight: bold; line-height: 1.6;';
+    const alertStyle = 'color: #ffffff; background-color: #DC3C22; font-size: 22px; font-weight: 900; padding: 6px 14px; border-radius: 6px; font-family: monospace;';
+    const textStyle = 'color: #3D74B6; font-size: 12px; font-family: monospace; font-weight: bold; line-height: 1.6;';
     const subStyle = 'color: #64748b; font-size: 11px; font-family: monospace;';
 
     console.log('%c⚠️ TAGX DEFENSE SYSTEM — STOP!', alertStyle);
