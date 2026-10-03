@@ -1025,4 +1025,124 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1200);
     });
   }
+
+  // 7. Initialize Multi-Select Dropdown for Contact Form
+  initServicesMultiSelect();
 });
+
+// =========================================================================
+// MULTI-SELECT DROPDOWN CONTROLLER (Project Domain / Services)
+// =========================================================================
+function initServicesMultiSelect() {
+  const container = document.getElementById('services-multiselect-container');
+  const btn = document.getElementById('services-dropdown-btn');
+  const menu = document.getElementById('services-dropdown-menu');
+  const display = document.getElementById('services-selected-display');
+  const countBadge = document.getElementById('services-count-badge');
+  const selectAllBtn = document.getElementById('services-select-all');
+  const chevron = document.getElementById('services-dropdown-chevron');
+
+  if (!container || !btn || !menu || !display) return;
+
+  function updateDisplay() {
+    const checked = Array.from(document.querySelectorAll('input[name="project_type"]:checked'));
+    if (countBadge) {
+      countBadge.textContent = checked.length === 0 ? 'None selected' : `${checked.length} selected`;
+    }
+    
+    if (checked.length === 0) {
+      display.innerHTML = `<span class="text-slate-500 text-xs font-mono">Select services needed...</span>`;
+      return;
+    }
+
+    // Display pills with close buttons
+    if (checked.length <= 2) {
+      display.innerHTML = checked.map(cb => {
+        const shortName = cb.value.split('(')[0].trim();
+        return `
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-tagx-teal/15 text-tagx-teal border border-tagx-teal/30 text-[11px] font-semibold">
+            <span>${escapeHtml(shortName)}</span>
+            <span class="cursor-pointer text-tagx-teal hover:text-white transition-colors" data-service-remove="${escapeHtml(cb.value)}">&times;</span>
+          </span>
+        `;
+      }).join('');
+    } else {
+      const firstTwo = checked.slice(0, 2);
+      const remaining = checked.length - 2;
+      display.innerHTML = firstTwo.map(cb => {
+        const shortName = cb.value.split('(')[0].trim();
+        return `
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-tagx-teal/15 text-tagx-teal border border-tagx-teal/30 text-[11px] font-semibold">
+            <span>${escapeHtml(shortName)}</span>
+            <span class="cursor-pointer text-tagx-teal hover:text-white transition-colors" data-service-remove="${escapeHtml(cb.value)}">&times;</span>
+          </span>
+        `;
+      }).join('') + `
+        <span class="px-2 py-0.5 rounded-lg bg-white/10 text-slate-300 text-[11px] font-mono font-bold">+${remaining} more</span>
+      `;
+    }
+
+    // Bind remove button handlers
+    display.querySelectorAll('[data-service-remove]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = el.getAttribute('data-service-remove');
+        const targetCb = document.querySelector(`input[name="project_type"][value="${val}"]`);
+        if (targetCb) {
+          targetCb.checked = false;
+          updateDisplay();
+        }
+      });
+    });
+
+    if (selectAllBtn) {
+      const allCbs = Array.from(document.querySelectorAll('input[name="project_type"]'));
+      selectAllBtn.textContent = checked.length === allCbs.length ? 'Deselect All' : 'Select All';
+    }
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    if (chevron) {
+      chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+  });
+
+  document.querySelectorAll('input[name="project_type"]').forEach(cb => {
+    cb.addEventListener('change', updateDisplay);
+  });
+
+  if (selectAllBtn) {
+    selectAllBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const allCbs = Array.from(document.querySelectorAll('input[name="project_type"]'));
+      const shouldSelectAll = allCbs.some(cb => !cb.checked);
+      allCbs.forEach(cb => { cb.checked = shouldSelectAll; });
+      updateDisplay();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      menu.classList.add('hidden');
+      if (chevron) chevron.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  // Handle contact form reset
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('reset', () => {
+      setTimeout(updateDisplay, 20);
+    });
+  }
+
+  updateDisplay();
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initServicesMultiSelect();
+}
