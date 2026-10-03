@@ -83,10 +83,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #FBF5DE !important;
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(61, 116, 182, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(220, 60, 34, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(61, 116, 182, 0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 75% 55% at 90% 85%, rgba(220, 60, 34, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(61, 116, 182, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 35%, rgba(234, 200, 166, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 65%, rgba(61, 116, 182, 0.12) 0%, transparent 55%),
     radial-gradient(ellipse 80% 50% at 50% 110%, rgba(234, 200, 166, 0.25) 0%, transparent 60%),
     linear-gradient(180deg, #FBF5DE 0%, #f6edd0 35%, #ecd8b8 70%, #FBF5DE 100%) !important;
   background-attachment: fixed;
@@ -151,36 +150,22 @@ body {
   opacity: 0.46;
 }
 
+.aurora-orb-blue,
 .aurora-orb-teal {
   width: 780px;
   height: 780px;
   top: -150px;
   left: -150px;
-  background: radial-gradient(circle, rgba(61, 116, 182, 0.48) 0%, rgba(80, 138, 210, 0.28) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(61, 116, 182, 0.35) 0%, rgba(80, 138, 210, 0.16) 40%, transparent 70%);
 }
 
-.aurora-orb-rose {
-  width: 820px;
-  height: 820px;
-  top: 25%;
-  right: -200px;
-  background: radial-gradient(circle, rgba(220, 60, 34, 0.42) 0%, rgba(235, 95, 72, 0.25) 45%, transparent 70%);
-}
-
+.aurora-orb-sand,
 .aurora-orb-gold {
   width: 800px;
   height: 800px;
   bottom: -200px;
   left: 20%;
-  background: radial-gradient(circle, rgba(234, 200, 166, 0.45) 0%, rgba(215, 175, 135, 0.25) 45%, transparent 70%);
-}
-
-.aurora-orb-violet {
-  width: 650px;
-  height: 650px;
-  top: 55%;
-  left: -100px;
-  background: radial-gradient(circle, rgba(61, 116, 182, 0.28) 0%, rgba(234, 200, 166, 0.18) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(234, 200, 166, 0.45) 0%, rgba(215, 175, 135, 0.20) 45%, transparent 70%);
 }
 
 /* Glassmorphism Classes with High Specular Contrast & Frosting */

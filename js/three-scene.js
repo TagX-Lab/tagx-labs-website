@@ -10,7 +10,7 @@
  * - Smooth Scroll-Driven 3D Depth & Zero-Gravity Parallax
  * - Auto-pauses on scroll when hero is off-screen for 0% background GPU/CPU overhead
  * - Photorealistic 3D Floating Cybernetic Laptop with High-Performance Metal Shaders
- * - Real-Time Dynamic Green & Black Matrix / Hacker Screen with Live Terminal Stream
+ * - Real-Time Dynamic Royal Blue Cyber Screen with Live Terminal Stream
  * - 4,000 Interactive Neural Particle Constellation with Fluid Cosmic Wave Turbulence
  */
 
@@ -70,8 +70,8 @@
   topGlowLight.position.set(0, 26, 12);
   scene.add(topGlowLight);
 
-  // Screen Green Emissive Light in 3D Space
-  const screenGlowLight = new THREE.PointLight(0x00FF88, 4.0, 24);
+  // Screen Royal Blue Emissive Light in 3D Space
+  const screenGlowLight = new THREE.PointLight(0x3D74B6, 4.0, 24);
   screenGlowLight.position.set(0, 2.5, 6);
   masterGroup.add(screenGlowLight);
 
@@ -83,7 +83,7 @@
   topGlowLight.intensity = 4.2;
 
   // =========================================================================
-  // 4. PROCEDURAL REAL-TIME GREEN & BLACK HACKER SCREEN ENGINE
+  // 4. PROCEDURAL REAL-TIME ROYAL BLUE CYBER SCREEN ENGINE
   // =========================================================================
   const hackerCanvas = document.createElement('canvas');
   hackerCanvas.width = 1024;
@@ -120,8 +120,8 @@
   let frameCounter = 0;
 
   function renderHackerScreen(time) {
-    // 1. Semi-transparent black wash for phosphorescent matrix trails
-    hCtx.fillStyle = 'rgba(2, 9, 6, 0.22)';
+    // 1. Semi-transparent deep navy wash for matrix trails
+    hCtx.fillStyle = 'rgba(6, 12, 24, 0.25)';
     hCtx.fillRect(0, 0, hackerCanvas.width, hackerCanvas.height);
 
     // 2. Matrix Digital Rain Columns
@@ -132,14 +132,14 @@
       const y = matrixDrops[i] * fontSize;
 
       if (y > 0 && y < hackerCanvas.height) {
-        // Glowing bright white/neon green head
-        hCtx.fillStyle = '#E8FFE8';
-        hCtx.shadowColor = '#00FF88';
+        // Glowing bright white/blue head
+        hCtx.fillStyle = '#FFFFFF';
+        hCtx.shadowColor = '#3D74B6';
         hCtx.shadowBlur = 8;
         hCtx.fillText(char, x, y);
 
-        // Green character behind
-        hCtx.fillStyle = '#00FF66';
+        // Blue character behind
+        hCtx.fillStyle = '#3D74B6';
         hCtx.shadowBlur = 0;
         const prevChar = matrixChars[Math.floor(Math.random() * matrixChars.length)];
         hCtx.fillText(prevChar, x, y - fontSize);
@@ -151,32 +151,32 @@
       }
     }
 
-    // 3. Cyber Terminal Window Frames (Green & Black HUD)
+    // 3. Cyber Terminal Window Frames (Blue & Navy HUD)
     hCtx.shadowBlur = 0;
     
     // Top Bar Background
-    hCtx.fillStyle = 'rgba(2, 18, 12, 0.88)';
+    hCtx.fillStyle = 'rgba(10, 20, 36, 0.90)';
     hCtx.fillRect(20, 20, hackerCanvas.width - 40, 36);
-    hCtx.strokeStyle = '#00FF88';
+    hCtx.strokeStyle = '#3D74B6';
     hCtx.lineWidth = 1.5;
     hCtx.strokeRect(20, 20, hackerCanvas.width - 40, 36);
 
     // Window Dots
-    hCtx.fillStyle = '#FF5F56';
+    hCtx.fillStyle = '#DC3C22';
     hCtx.beginPath();
     hCtx.arc(38, 38, 5, 0, Math.PI * 2);
     hCtx.fill();
-    hCtx.fillStyle = '#FFBD2E';
+    hCtx.fillStyle = '#EAC8A6';
     hCtx.beginPath();
     hCtx.arc(54, 38, 5, 0, Math.PI * 2);
     hCtx.fill();
-    hCtx.fillStyle = '#27C93F';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.beginPath();
     hCtx.arc(70, 38, 5, 0, Math.PI * 2);
     hCtx.fill();
 
     // Title Text
-    hCtx.fillStyle = '#00FF88';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.font = 'bold 13px "JetBrains Mono", monospace';
     hCtx.fillText('TAGX CYBER TERMINAL v2.6 // ROOT PRIVILEGES ACTIVE', 92, 42);
 
@@ -188,14 +188,14 @@
     // 4. Main Left Terminal Output Window
     const mainBoxWidth = 590;
     const mainBoxHeight = hackerCanvas.height - 84;
-    hCtx.fillStyle = 'rgba(1, 14, 8, 0.78)';
+    hCtx.fillStyle = 'rgba(8, 16, 30, 0.85)';
     hCtx.fillRect(20, 64, mainBoxWidth, mainBoxHeight);
-    hCtx.strokeStyle = 'rgba(0, 255, 136, 0.6)';
+    hCtx.strokeStyle = 'rgba(61, 116, 182, 0.6)';
     hCtx.strokeRect(20, 64, mainBoxWidth, mainBoxHeight);
 
     // Terminal Corner Brackets
     const bracketSize = 12;
-    hCtx.strokeStyle = '#00FF88';
+    hCtx.strokeStyle = '#3D74B6';
     hCtx.lineWidth = 2.5;
     // Top-Left
     hCtx.beginPath();
@@ -228,13 +228,13 @@
 
       if (i === visibleLines - 1) {
         // Active latest prompt line
-        hCtx.fillStyle = '#E8FFE8';
-        hCtx.shadowColor = '#00FF88';
+        hCtx.fillStyle = '#FFFFFF';
+        hCtx.shadowColor = '#3D74B6';
         hCtx.shadowBlur = 6;
         hCtx.fillText(text, 36, y);
       } else {
-        // Normal log lines with alternating emerald glow
-        hCtx.fillStyle = (i % 2 === 0) ? '#00FF88' : '#38EF7D';
+        // Normal log lines with alternating blue and sand glow
+        hCtx.fillStyle = (i % 2 === 0) ? '#3D74B6' : '#EAC8A6';
         hCtx.shadowBlur = 0;
         hCtx.fillText(text, 36, y);
       }
@@ -242,7 +242,7 @@
 
     // Blinking Cyber Cursor
     if (Math.sin(time * 6) > 0) {
-      hCtx.fillStyle = '#00FF88';
+      hCtx.fillStyle = '#3D74B6';
       hCtx.fillRect(36, 96 + (visibleLines - 1) * 32 + 4, 10, 15);
     }
 
@@ -251,13 +251,13 @@
     const rightWidth = hackerCanvas.width - rightX - 20;
 
     // Top Right: Real-time Waveform / Audio Visualizer Bars
-    hCtx.fillStyle = 'rgba(1, 14, 8, 0.78)';
+    hCtx.fillStyle = 'rgba(8, 16, 30, 0.85)';
     hCtx.fillRect(rightX, 64, rightWidth, 160);
-    hCtx.strokeStyle = 'rgba(0, 255, 136, 0.6)';
+    hCtx.strokeStyle = 'rgba(61, 116, 182, 0.6)';
     hCtx.lineWidth = 1.5;
     hCtx.strokeRect(rightX, 64, rightWidth, 160);
 
-    hCtx.fillStyle = '#00FF88';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.font = 'bold 11px "JetBrains Mono", monospace';
     hCtx.fillText('// NEURAL WAVEFORM SPECTRUM', rightX + 14, 86);
 
@@ -268,21 +268,21 @@
       const bHeight = 15 + Math.abs(Math.sin(time * 3 + b * 0.45) * Math.cos(time * 2 + b * 0.3)) * 80;
       
       const grad = hCtx.createLinearGradient(0, 200, 0, 200 - bHeight);
-      grad.addColorStop(0, '#005522');
-      grad.addColorStop(0.7, '#00FF88');
-      grad.addColorStop(1, '#E8FFE8');
+      grad.addColorStop(0, '#1c3d69');
+      grad.addColorStop(0.7, '#3D74B6');
+      grad.addColorStop(1, '#FBF5DE');
       
       hCtx.fillStyle = grad;
       hCtx.fillRect(bx, 204 - bHeight, barWidth, bHeight);
     }
 
     // Middle Right: Hex Memory Dump Box
-    hCtx.fillStyle = 'rgba(1, 14, 8, 0.78)';
+    hCtx.fillStyle = 'rgba(8, 16, 30, 0.85)';
     hCtx.fillRect(rightX, 234, rightWidth, 180);
-    hCtx.strokeStyle = 'rgba(0, 255, 136, 0.6)';
+    hCtx.strokeStyle = 'rgba(61, 116, 182, 0.6)';
     hCtx.strokeRect(rightX, 234, rightWidth, 180);
 
-    hCtx.fillStyle = '#00FF88';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.font = 'bold 11px "JetBrains Mono", monospace';
     hCtx.fillText('// CORE MEMORY ADDRESS TABLE', rightX + 14, 254);
 
@@ -291,27 +291,27 @@
       '0x7FFF8A40: 4F 52 43 41 20 54 41 47',
       '0x7FFF8A48: 58 2D 4E 45 55 52 41 4C',
       '0x7FFF8A50: 2E 4B 45 52 4E 45 4C 21',
-      '0x7FFF8A58: 14 B1 AB E8 50 5B F9 D5',
+      '0x7FFF8A58: 3D 74 B6 DC 3C 22 EA C8',
       '0x7FFF8A60: 6E 00 24 88 FF 00 9D EA',
       '0x7FFF8A68: 8A 19 CC B4 90 22 01 EF',
     ];
 
     hexRows.forEach((row, idx) => {
-      hCtx.fillStyle = (idx === 1 || idx === 3) ? '#EAC8A6' : '#38EF7D';
+      hCtx.fillStyle = (idx === 1 || idx === 3) ? '#EAC8A6' : '#3D74B6';
       hCtx.fillText(row, rightX + 14, 276 + idx * 22);
     });
 
     // Bottom Right: Circular Radar Cyber Sweep
-    hCtx.fillStyle = 'rgba(1, 14, 8, 0.78)';
+    hCtx.fillStyle = 'rgba(8, 16, 30, 0.85)';
     hCtx.fillRect(rightX, 424, rightWidth, hackerCanvas.height - 444);
-    hCtx.strokeStyle = 'rgba(0, 255, 136, 0.6)';
+    hCtx.strokeStyle = 'rgba(61, 116, 182, 0.6)';
     hCtx.strokeRect(rightX, 424, rightWidth, hackerCanvas.height - 444);
 
     const radarCenterX = rightX + 75;
     const radarCenterY = 516;
     const radarRadius = 55;
 
-    hCtx.strokeStyle = 'rgba(0, 255, 136, 0.4)';
+    hCtx.strokeStyle = 'rgba(61, 116, 182, 0.4)';
     hCtx.lineWidth = 1;
     hCtx.beginPath();
     hCtx.arc(radarCenterX, radarCenterY, radarRadius, 0, Math.PI * 2);
@@ -321,7 +321,7 @@
 
     // Radar Sweep Line
     const sweepAngle = time * 2.8;
-    hCtx.strokeStyle = '#00FF88';
+    hCtx.strokeStyle = '#3D74B6';
     hCtx.lineWidth = 2;
     hCtx.beginPath();
     hCtx.moveTo(radarCenterX, radarCenterY);
@@ -332,10 +332,10 @@
     hCtx.stroke();
 
     // Radar Metrics next to circle
-    hCtx.fillStyle = '#00FF88';
+    hCtx.fillStyle = '#3D74B6';
     hCtx.font = 'bold 11px "JetBrains Mono", monospace';
     hCtx.fillText('SECURITY STATUS', rightX + 145, 480);
-    hCtx.fillStyle = '#E8FFE8';
+    hCtx.fillStyle = '#FBF5DE';
     hCtx.fillText('STATUS: LOCKED', rightX + 145, 502);
     hCtx.fillStyle = '#3D74B6';
     hCtx.fillText('NODES: ACTIVE', rightX + 145, 524);
@@ -387,13 +387,13 @@
         kCtx.fillStyle = '#05090b';
         kCtx.fillRect(kx, ky, keyW, keyH);
 
-        // Keycap border with subtle cyan/teal glow
-        kCtx.strokeStyle = 'rgba(20, 177, 171, 0.4)';
+        // Keycap border with subtle blue glow
+        kCtx.strokeStyle = 'rgba(61, 116, 182, 0.4)';
         kCtx.lineWidth = 1;
         kCtx.strokeRect(kx, ky, keyW, keyH);
 
         // Key backlight dot
-        kCtx.fillStyle = 'rgba(0, 255, 136, 0.6)';
+        kCtx.fillStyle = 'rgba(61, 116, 182, 0.6)';
         kCtx.fillRect(kx + 4, ky + keyH - 6, keyW - 8, 2);
       }
     }
@@ -401,9 +401,9 @@
     // Spacebar
     kCtx.fillStyle = '#05090b';
     kCtx.fillRect(140, padY + 4 * (keyH + 12), 220, keyH);
-    kCtx.strokeStyle = 'rgba(0, 255, 136, 0.8)';
+    kCtx.strokeStyle = 'rgba(61, 116, 182, 0.8)';
     kCtx.strokeRect(140, padY + 4 * (keyH + 12), 220, keyH);
-    kCtx.fillStyle = '#00FF88';
+    kCtx.fillStyle = '#3D74B6';
     kCtx.fillRect(160, padY + 4 * (keyH + 12) + keyH - 5, 180, 2);
 
     return new THREE.CanvasTexture(kbCanvas);
@@ -439,7 +439,7 @@
 
   // Front Edge RGB Lightbar
   const lightbarGeo = new THREE.BoxGeometry(baseWidth - 0.4, 0.08, 0.08);
-  const lightbarMat = new THREE.MeshBasicMaterial({ color: 0x00FF9D });
+  const lightbarMat = new THREE.MeshBasicMaterial({ color: 0x3D74B6 });
   const lightbarMesh = new THREE.Mesh(lightbarGeo, lightbarMat);
   lightbarMesh.position.set(0, -0.1, baseDepth / 2 + 0.02);
   laptopGroup.add(lightbarMesh);
@@ -450,7 +450,7 @@
     map: createKeyboardTexture(),
     roughness: 0.4,
     metalness: 0.6,
-    emissive: 0x002218,
+    emissive: 0x0c1b2f,
     emissiveIntensity: 0.5,
   });
   const kbMesh = new THREE.Mesh(kbGeo, kbMat);
@@ -506,8 +506,8 @@
   const screenMat = new THREE.MeshStandardMaterial({
     map: screenTexture,
     emissiveMap: screenTexture,
-    emissive: 0x00FF88,
-    emissiveIntensity: 0.95,
+    emissive: 0x3D74B6,
+    emissiveIntensity: 0.85,
     roughness: 0.15,
     metalness: 0.2,
   });
@@ -517,7 +517,7 @@
 
   // Top Camera Notch / Sensor Dot
   const notchGeo = new THREE.CircleGeometry(0.12, 16);
-  const notchMat = new THREE.MeshBasicMaterial({ color: 0x00FF88 });
+  const notchMat = new THREE.MeshBasicMaterial({ color: 0x3D74B6 });
   const notchMesh = new THREE.Mesh(notchGeo, notchMat);
   notchMesh.position.set(0, lidHeight - 0.25, lidThickness / 2 + 0.03);
   lidGroup.add(notchMesh);
@@ -571,7 +571,6 @@
     new THREE.Color(0x3D74B6), // Royal Ocean Blue (#3D74B6)
     new THREE.Color(0xDC3C22), // Terracotta Crimson Red (#DC3C22)
     new THREE.Color(0xEAC8A6), // Warm Sand Almond Tan (#EAC8A6)
-    new THREE.Color(0x00FF88), // Electric Neon Matrix Green
     new THREE.Color(0xFBF5DE), // Warm Ivory Cream (#FBF5DE)
   ];
 
@@ -598,9 +597,9 @@
     const ctx = canvas.getContext('2d');
 
     const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(243, 236, 194, 1)');
-    gradient.addColorStop(0.3, 'rgba(0, 255, 136, 0.85)');
-    gradient.addColorStop(0.7, 'rgba(20, 177, 171, 0.35)');
+    gradient.addColorStop(0, 'rgba(251, 245, 222, 1)');
+    gradient.addColorStop(0.3, 'rgba(61, 116, 182, 0.85)');
+    gradient.addColorStop(0.7, 'rgba(234, 200, 166, 0.35)');
     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
     ctx.fillStyle = gradient;
@@ -645,7 +644,7 @@
 
   rayGeo.setAttribute('position', new THREE.BufferAttribute(rayPositions, 3));
   const rayMat = new THREE.LineBasicMaterial({
-    color: 0x00FF88,
+    color: 0x3D74B6,
     transparent: true,
     opacity: 0.35,
   });
@@ -715,7 +714,7 @@
 
     const elapsedTime = clock.getElapsedTime();
 
-    // 1. Redraw Live Green & Black Hacker Screen Matrix Frame
+    // 1. Redraw Live Royal Blue Cyber Screen Matrix Frame
     renderHackerScreen(elapsedTime);
     screenTexture.needsUpdate = true;
 

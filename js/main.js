@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.forEach((link) => {
-      link.classList.remove('bg-white/10', 'text-white', 'text-cyan-300');
+      link.classList.remove('bg-white/10', 'text-white', 'text-tagx-teal');
       if (link.getAttribute('href') === `#${currentSectionId}`) {
-        link.classList.add('bg-white/10', 'text-white');
+        link.classList.add('bg-white/10', 'text-white', 'text-tagx-teal');
       }
     });
   });
