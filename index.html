@@ -690,23 +690,48 @@
             </div>
 
             <div>
-              <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold">Project Domain / Service Needed</label>
+              <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold flex items-center justify-between">
+                <span>Project Domain / Services Needed</span>
+                <span class="text-[10px] text-tagx-teal font-normal">(Select all that apply)</span>
+              </label>
               <div class="grid grid-cols-2 gap-2 text-xs font-mono font-semibold">
-                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-teal transition-colors">
-                  <input type="radio" name="project_type" value="Websites & Web Apps" checked class="accent-[#3D74B6]">
-                  <span class="text-white">Websites & Web Apps</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-teal transition-all group has-[:checked]:border-tagx-teal has-[:checked]:bg-tagx-teal/15">
+                  <input type="checkbox" name="project_type" value="Websites & 3D Web Apps" checked class="w-4 h-4 rounded text-tagx-teal accent-[#3D74B6] focus:ring-0">
+                  <span class="text-white text-xs group-hover:text-tagx-teal transition-colors">Websites & 3D Web Apps</span>
                 </label>
-                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-rose transition-colors">
-                  <input type="radio" name="project_type" value="Laptop Softwares" class="accent-[#3D74B6]">
-                  <span class="text-white">Laptop Softwares</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-rose transition-all group has-[:checked]:border-tagx-rose has-[:checked]:bg-tagx-rose/15">
+                  <input type="checkbox" name="project_type" value="Desktop & Laptop Softwares" class="w-4 h-4 rounded text-tagx-rose accent-[#DC3C22] focus:ring-0">
+                  <span class="text-white text-xs group-hover:text-tagx-rose transition-colors">Desktop & Laptop Softwares</span>
                 </label>
-                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-gold transition-colors">
-                  <input type="radio" name="project_type" value="Mobile Apps" class="accent-[#3D74B6]">
-                  <span class="text-white">Mobile Apps</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-gold transition-all group has-[:checked]:border-tagx-gold has-[:checked]:bg-tagx-gold/15">
+                  <input type="checkbox" name="project_type" value="Mobile Apps (iOS & Android)" class="w-4 h-4 rounded text-tagx-gold accent-[#EAC8A6] focus:ring-0">
+                  <span class="text-white text-xs group-hover:text-tagx-gold transition-colors">Mobile Apps (iOS & Android)</span>
                 </label>
-                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-teal transition-colors">
-                  <input type="radio" name="project_type" value="New Ideas & Solutions" class="accent-[#3D74B6]">
-                  <span class="text-white">New Ideas & Solutions</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-teal transition-all group has-[:checked]:border-tagx-teal has-[:checked]:bg-tagx-teal/15">
+                  <input type="checkbox" name="project_type" value="Custom Systems & AI Solutions" class="w-4 h-4 rounded text-tagx-teal accent-[#3D74B6] focus:ring-0">
+                  <span class="text-white text-xs group-hover:text-tagx-teal transition-colors">Custom Systems & AI</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Project Timeline / Urgency Selector -->
+            <div>
+              <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold flex items-center justify-between">
+                <span>Target Timeline & Urgency</span>
+                <span class="text-[10px] text-tagx-gold font-normal">Expected Delivery</span>
+              </label>
+              <div class="grid grid-cols-3 gap-2 text-xs font-mono font-semibold">
+                <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-rose transition-all text-center has-[:checked]:border-tagx-rose has-[:checked]:bg-tagx-rose/15 group">
+                  <input type="radio" name="project_timeline" value="Urgent (< 2 Weeks)" class="accent-[#DC3C22]">
+                  <span class="text-white text-[11px] group-hover:text-tagx-rose transition-colors">⚡ Urgent (&lt; 2 Wks)</span>
+                </label>
+                <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-teal transition-all text-center has-[:checked]:border-tagx-teal has-[:checked]:bg-tagx-teal/15 group">
+                  <input type="radio" name="project_timeline" value="1 - 2 Months" checked class="accent-[#3D74B6]">
+                  <span class="text-white text-[11px] group-hover:text-tagx-teal transition-colors">🗓️ 1 - 2 Months</span>
+                </label>
+                <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:border-tagx-gold transition-all text-center has-[:checked]:border-tagx-gold has-[:checked]:bg-tagx-gold/15 group">
+                  <input type="radio" name="project_timeline" value="Flexible Timeline" class="accent-[#EAC8A6]">
+                  <span class="text-white text-[11px] group-hover:text-tagx-gold transition-colors">🚀 Flexible</span>
                 </label>
               </div>
             </div>

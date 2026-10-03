@@ -237,11 +237,18 @@ window.handleContactSubmit = function (e) {
   const nameEl = document.getElementById('client-name');
   const emailEl = document.getElementById('client-email');
   const descEl = document.getElementById('project-desc');
-  const typeRadio = document.querySelector('input[name="project_type"]:checked');
+  
+  // Extract all selected services (multi-checkbox)
+  const checkedBoxes = Array.from(document.querySelectorAll('input[name="project_type"]:checked'));
+  const selectedServices = checkedBoxes.map(cb => sanitizeInput(cb.value, 60));
+  const projectType = selectedServices.length > 0 ? selectedServices.join(', ') : 'Custom Systems & AI Solutions';
+
+  // Extract selected timeline / urgency
+  const timelineRadio = document.querySelector('input[name="project_timeline"]:checked');
+  const projectTimeline = sanitizeInput(timelineRadio ? timelineRadio.value : '1 - 2 Months', 40);
 
   const name = sanitizeInput(nameEl ? nameEl.value : '', 80) || 'Partner';
   const email = sanitizeInput(emailEl ? emailEl.value : '', 120);
-  const projectType = sanitizeInput(typeRadio ? typeRadio.value : 'Custom Software', 50);
   const message = sanitizeInput(descEl ? descEl.value : '', 2000);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -266,6 +273,7 @@ window.handleContactSubmit = function (e) {
       name: name,
       email: email,
       projectType: projectType,
+      timeline: projectTimeline,
       message: message,
       date: new Date().toLocaleString()
     });
@@ -276,7 +284,7 @@ window.handleContactSubmit = function (e) {
   syncToGoogleDatabase({
     name: name,
     email: email,
-    service: projectType,
+    service: `${projectType} [${projectTimeline}]`,
     brief: message
   });
 
@@ -293,6 +301,7 @@ window.handleContactSubmit = function (e) {
           name: name,
           email: email,
           projectType: projectType,
+          timeline: projectTimeline,
           message: message,
           date: new Date().toLocaleString()
         })
@@ -541,9 +550,10 @@ window.renderVaultDashboard = function () {
             </a>
           </td>
           <td class="p-3.5">
-            <span class="px-2 py-0.5 rounded-full bg-tagx-rose/15 text-tagx-rose border border-tagx-rose/30 text-[10px] font-bold">
+            <span class="px-2 py-0.5 rounded-full bg-tagx-rose/15 text-tagx-rose border border-tagx-rose/30 text-[10px] font-bold inline-block">
               ${escapeHtml(item.projectType || 'Software')}
             </span>
+            ${item.timeline ? `<span class="block mt-1 text-[10px] text-tagx-gold font-mono">⏱️ ${escapeHtml(item.timeline)}</span>` : ''}
           </td>
           <td class="p-3.5 text-slate-300 text-[11px] max-w-xs truncate" title="${escapeHtml(item.message)}">
             ${escapeHtml(item.message || 'No description provided.')}
@@ -664,7 +674,7 @@ window.copyDataForGoogleSheet = function () {
 
   const rows = [];
   // TSV Header row for direct Google Sheet Cell A1 pasting
-  rows.push(['Timestamp', 'Record Type', 'Client / Partner Name', 'Work Email', 'Service / Tier', 'Project Scope / Message', 'Status'].join('\t'));
+  rows.push(['Timestamp', 'Record Type', 'Client / Partner Name', 'Work Email', 'Service / Tier', 'Timeline / Urgency', 'Project Scope / Message', 'Status'].join('\t'));
 
   // Inquiries rows
   inquiries.forEach((item, idx) => {
@@ -674,6 +684,7 @@ window.copyDataForGoogleSheet = function () {
       item.name || 'Anonymous',
       item.email || '',
       item.projectType || 'Software Engineering',
+      item.timeline || 'Flexible Timeline',
       (item.message || '').replace(/[\r\n\t]+/g, ' '),
       'New'
     ].join('\t'));
@@ -690,6 +701,7 @@ window.copyDataForGoogleSheet = function () {
       'Early Adopter',
       email,
       tier,
+      'Immediate Launch',
       'Launching Soon VIP Access',
       'Pending Launch'
     ].join('\t'));
@@ -727,7 +739,7 @@ window.copyDataForGoogleSheet = function () {
 
 // Copy Sheet 1 Headers for Client Inquiries
 window.copySheet1Headers = function () {
-  const headers = ['Timestamp', 'Inquiry ID', 'Client / Company Name', 'Work Email', 'Service Requested', 'Project Brief / Scope', 'Estimated Budget', 'Inquiry Status', 'Founder Notes'].join('\t');
+  const headers = ['Timestamp', 'Inquiry ID', 'Client / Company Name', 'Work Email', 'Service Requested', 'Timeline / Urgency', 'Project Brief / Scope', 'Estimated Budget', 'Inquiry Status', 'Founder Notes'].join('\t');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(headers).then(() => {
       window.showToast('✔ Sheet 1 (Client Inquiries) headers copied! Paste into Cell A1 of Sheet 1.', 'success');
@@ -771,7 +783,7 @@ window.exportInquiriesToCSV = function () {
     return;
   }
 
-  let csvContent = 'ID,Timestamp,Client Name,Work Email,Service Requested,Project Overview\n';
+  let csvContent = 'ID,Timestamp,Client Name,Work Email,Services Requested,Timeline / Urgency,Project Overview\n';
   inquiries.forEach(item => {
     const row = [
       escapeCSV(item.id || 'TX-0000'),
@@ -779,6 +791,7 @@ window.exportInquiriesToCSV = function () {
       escapeCSV(item.name || ''),
       escapeCSV(item.email || ''),
       escapeCSV(item.projectType || ''),
+      escapeCSV(item.timeline || ''),
       escapeCSV(item.message || '')
     ].join(',');
     csvContent += row + '\n';
@@ -867,7 +880,8 @@ window.seedSampleVaultData = function () {
       id: 'TX-7801',
       name: 'Sarah Chen (Aero Dynamics)',
       email: 'sarah.chen@aerodynamics.io',
-      projectType: 'Websites & Web Apps',
+      projectType: 'Websites & 3D Web Apps',
+      timeline: 'Urgent (< 2 Weeks)',
       message: 'Need a high-performance 3D WebGL interactive landing experience for our aerospace SaaS launch.',
       date: new Date(Date.now() - 3600000 * 4).toLocaleString()
     },
@@ -875,7 +889,8 @@ window.seedSampleVaultData = function () {
       id: 'TX-8924',
       name: 'Marcus Vance (Quantum CLI)',
       email: 'marcus@quantumcore.dev',
-      projectType: 'Laptop Softwares',
+      projectType: 'Desktop & Laptop Softwares',
+      timeline: '1 - 2 Months',
       message: 'Looking for a native offline Windows & Mac desktop developer tool with SQLite and zero telemetry.',
       date: new Date(Date.now() - 3600000 * 24).toLocaleString()
     },
@@ -883,7 +898,8 @@ window.seedSampleVaultData = function () {
       id: 'TX-9102',
       name: 'Devin Thorne (FinPulse)',
       email: 'devin@finpulse.app',
-      projectType: 'Mobile Apps',
+      projectType: 'Mobile Apps (iOS & Android), Custom Systems & AI',
+      timeline: 'Flexible Timeline',
       message: 'Need a 120 FPS Flutter mobile app for iOS and Android with biometric auth and real-time websockets.',
       date: new Date(Date.now() - 3600000 * 48).toLocaleString()
     }
