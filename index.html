@@ -78,8 +78,8 @@
   </div>
 
   <!-- ==================== 1. FLOATING ISLAND NAVBAR ==================== -->
-  <header class="fixed top-4 inset-x-0 z-40 px-4 sm:px-6 max-w-7xl mx-auto">
-    <nav class="glass-nav rounded-2xl px-4 py-3 sm:px-6 flex items-center justify-between border border-white/15 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+  <header class="fixed top-4 inset-x-0 z-40 px-4 flex flex-col items-center pointer-events-none">
+    <nav class="glass-nav rounded-2xl sm:rounded-full px-4 py-2 sm:px-5 sm:py-2 flex items-center justify-between sm:justify-start gap-4 sm:gap-6 border border-white/15 shadow-[0_10px_35px_rgba(15,23,42,0.08)] backdrop-blur-xl pointer-events-auto w-full sm:w-auto">
       
       <!-- Brand Logo -->
       <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-tagx-teal/50 rounded-lg p-1">
@@ -118,7 +118,7 @@
     </nav>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden mt-2 p-4 glass-card rounded-2xl border border-white/15 flex-col gap-2 transition-all duration-300">
+    <div id="mobile-menu" class="hidden lg:hidden mt-2 p-4 glass-card rounded-2xl border border-white/15 flex-col gap-2 transition-all duration-300 w-full max-w-md pointer-events-auto shadow-2xl">
       <a href="#about" class="mobile-nav-link px-4 py-2.5 rounded-xl text-white hover:bg-white/10 font-semibold flex items-center gap-3">
         <i data-lucide="users" class="w-4 h-4 text-tagx-teal"></i> Who We Are
       </a>
