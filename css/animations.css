@@ -1,0 +1,295 @@
+/* ==========================================================================
+   TAGX Labs™ — Motion & Animation System
+   Lenis Momentum Smooth Scrolling & Kinetic Spring Animations
+   ========================================================================== */
+
+/* Lenis Studio-Grade Smooth Scrolling Engine */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Keyframe Definitions */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.06); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation Classes */
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulseSubtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-modal-enter {
+  animation: modalEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Scroll-triggered reveal state with Spring Physics */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(36px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger Delays for Bento Grids & Cards */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+
+/* Hero Dynamic Scroll Transition Layer */
+#hero-content {
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  will-change: transform, opacity;
+}
+
+/* 3D Card Tilt Dynamic Physics */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Real-Time Download Counter Animations */
+@keyframes counterGlow {
+  0% {
+    color: #14B1AB;
+    text-shadow: 0 0 16px rgba(20, 177, 171, 0.9);
+    transform: scale(1.18);
+  }
+  100% {
+    text-shadow: none;
+    transform: scale(1);
+  }
+}
+
+.counter-pulse-glow {
+  display: inline-block;
+  animation: counterGlow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatPlusOne {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.7);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-22px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-32px) scale(0.85);
+  }
+}
+
+.plus-one-badge {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  background: linear-gradient(135deg, #14B1AB, #F9D56E);
+  color: #090e0d;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  box-shadow: 0 0 16px rgba(20, 177, 171, 0.7);
+  pointer-events: none;
+  z-index: 50;
+  animation: floatPlusOne 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Dynamic Ambient Aurora & Cyber Background Animation System
+   ========================================================================== */
+@keyframes auroraDrift1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate(80px, 60px) scale(1.15) rotate(45deg);
+    opacity: 0.95;
+  }
+  66% {
+    transform: translate(-50px, 100px) scale(0.9) rotate(-30deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes auroraDrift2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  33% {
+    transform: translate(-90px, -50px) scale(1.2) rotate(-40deg);
+    opacity: 0.9;
+  }
+  66% {
+    transform: translate(60px, -80px) scale(0.95) rotate(35deg);
+    opacity: 0.65;
+  }
+}
+
+@keyframes auroraDrift3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(70px, -60px) scale(1.25);
+    opacity: 0.85;
+  }
+}
+
+@keyframes auroraDrift4 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(-60px, 70px) scale(1.18) rotate(60deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridPulseGlow {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes cyberTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+.animate-aurora-1 {
+  animation: auroraDrift1 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-aurora-2 {
+  animation: auroraDrift2 22s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-aurora-3 {
+  animation: auroraDrift3 26s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-aurora-4 {
+  animation: auroraDrift4 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-grid-pulse {
+  animation: gridPulseGlow 10s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: cyberTwinkle 4s ease-in-out infinite;
+}
+
