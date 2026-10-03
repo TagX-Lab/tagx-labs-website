@@ -243,10 +243,6 @@ window.handleContactSubmit = function (e) {
   const selectedServices = checkedBoxes.map(cb => sanitizeInput(cb.value, 60));
   const projectType = selectedServices.length > 0 ? selectedServices.join(', ') : 'Custom Systems & AI Solutions';
 
-  // Extract selected timeline / urgency
-  const timelineRadio = document.querySelector('input[name="project_timeline"]:checked');
-  const projectTimeline = sanitizeInput(timelineRadio ? timelineRadio.value : '1 - 2 Months', 40);
-
   const name = sanitizeInput(nameEl ? nameEl.value : '', 80) || 'Partner';
   const email = sanitizeInput(emailEl ? emailEl.value : '', 120);
   const message = sanitizeInput(descEl ? descEl.value : '', 2000);
@@ -273,7 +269,6 @@ window.handleContactSubmit = function (e) {
       name: name,
       email: email,
       projectType: projectType,
-      timeline: projectTimeline,
       message: message,
       date: new Date().toLocaleString()
     });
@@ -284,7 +279,7 @@ window.handleContactSubmit = function (e) {
   syncToGoogleDatabase({
     name: name,
     email: email,
-    service: `${projectType} [${projectTimeline}]`,
+    service: projectType,
     brief: message
   });
 
@@ -301,7 +296,6 @@ window.handleContactSubmit = function (e) {
           name: name,
           email: email,
           projectType: projectType,
-          timeline: projectTimeline,
           message: message,
           date: new Date().toLocaleString()
         })
