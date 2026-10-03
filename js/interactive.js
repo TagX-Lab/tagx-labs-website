@@ -512,31 +512,125 @@ window.renderVaultDashboard = function () {
   if (window.lucide) window.lucide.createIcons();
 };
 
+// Official Google Cloud Sheet Integration for Secret Vault
+const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing';
+const GOOGLE_SHEET_ID = '15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw';
+
 // Tab Switching inside Vault
 window.switchVaultTab = function (tabName) {
   const inqTab = document.getElementById('vault-tab-inquiries');
   const waitTab = document.getElementById('vault-tab-waitlist');
+  const gsheetTab = document.getElementById('vault-tab-gsheet');
   const inqBtn = document.getElementById('tab-btn-inquiries');
   const waitBtn = document.getElementById('tab-btn-waitlist');
+  const gsheetBtn = document.getElementById('tab-btn-gsheet');
+
+  // Hide all tabs
+  if (inqTab) inqTab.classList.add('hidden');
+  if (waitTab) waitTab.classList.add('hidden');
+  if (gsheetTab) gsheetTab.classList.add('hidden');
+
+  // Default button style
+  const defaultClass = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2';
+  if (inqBtn) inqBtn.className = defaultClass;
+  if (waitBtn) waitBtn.className = defaultClass;
+  if (gsheetBtn) gsheetBtn.className = defaultClass;
 
   if (tabName === 'inquiries') {
     if (inqTab) inqTab.classList.remove('hidden');
-    if (waitTab) waitTab.classList.add('hidden');
     if (inqBtn) {
       inqBtn.className = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tagx-teal/20 text-tagx-teal border border-tagx-teal/40 transition-all flex items-center gap-2';
     }
-    if (waitBtn) {
-      waitBtn.className = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2';
-    }
-  } else {
-    if (inqTab) inqTab.classList.add('hidden');
+  } else if (tabName === 'waitlist') {
     if (waitTab) waitTab.classList.remove('hidden');
-    if (inqBtn) {
-      inqBtn.className = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2';
-    }
     if (waitBtn) {
       waitBtn.className = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tagx-rose/20 text-tagx-rose border border-tagx-rose/40 transition-all flex items-center gap-2';
     }
+  } else if (tabName === 'gsheet') {
+    if (gsheetTab) gsheetTab.classList.remove('hidden');
+    if (gsheetBtn) {
+      gsheetBtn.className = 'px-4 py-2 rounded-xl text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 transition-all flex items-center gap-2';
+    }
+  }
+
+  if (window.lucide) window.lucide.createIcons();
+};
+
+// 1-Click Copy All Vault Data Formatted for Google Sheet (TSV Format)
+window.copyDataForGoogleSheet = function () {
+  let inquiries = [];
+  let waitlist = [];
+
+  try {
+    inquiries = JSON.parse(localStorage.getItem('tagx_inquiries') || '[]');
+    waitlist = JSON.parse(localStorage.getItem('tagx_product_waitlist') || '[]');
+  } catch (_) {}
+
+  if (inquiries.length === 0 && waitlist.length === 0) {
+    window.showToast('⚠️ No records to copy yet! Submit a form or click "Load Sample" first.', 'error');
+    return;
+  }
+
+  const rows = [];
+  // TSV Header row for direct Google Sheet Cell A1 pasting
+  rows.push(['Timestamp', 'Record Type', 'Client / Partner Name', 'Work Email', 'Service / Tier', 'Project Scope / Message', 'Status'].join('\t'));
+
+  // Inquiries rows
+  inquiries.forEach((item, idx) => {
+    rows.push([
+      item.date || new Date().toLocaleString(),
+      'Client Inquiry',
+      item.name || 'Anonymous',
+      item.email || '',
+      item.projectType || 'Software Engineering',
+      (item.message || '').replace(/[\r\n\t]+/g, ' '),
+      'New'
+    ].join('\t'));
+  });
+
+  // Waitlist rows
+  waitlist.forEach((item, idx) => {
+    const email = typeof item === 'string' ? item : item.email;
+    const date = (typeof item === 'object' && item.date) ? item.date : new Date().toLocaleString();
+    const tier = (typeof item === 'object' && item.tier) ? item.tier : 'VIP Early Access';
+    rows.push([
+      date,
+      'Product VIP Waitlist',
+      'Early Adopter',
+      email,
+      tier,
+      'Launching Soon VIP Access',
+      'Pending Launch'
+    ].join('\t'));
+  });
+
+  const tsvText = rows.join('\n');
+  const count = inquiries.length + waitlist.length;
+
+  function doFallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      window.showToast(`✔ Copied ${count} rows! Open Google Sheet and press Ctrl+V in Cell A1.`, 'success');
+    } catch (_) {
+      window.showToast('Could not copy automatically. Please open the Google Sheet directly.', 'error');
+    }
+    document.body.removeChild(ta);
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(tsvText).then(() => {
+      window.showToast(`✔ Copied ${count} rows! Open Google Sheet and press Ctrl+V in Cell A1.`, 'success');
+    }).catch(() => {
+      doFallbackCopy(tsvText);
+    });
+  } else {
+    doFallbackCopy(tsvText);
   }
 };
 

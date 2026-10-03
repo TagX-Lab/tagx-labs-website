@@ -877,14 +877,19 @@
 
         <!-- Header Actions -->
         <div class="flex items-center gap-2.5 flex-wrap">
+          <a href="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md" title="Open Google Sheet: TagX informachions from web site">
+            <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
+            <span>Live Google Sheet ↗</span>
+          </a>
+
           <button onclick="exportInquiriesToCSV()" class="px-3.5 py-2 rounded-xl bg-tagx-teal/20 hover:bg-tagx-teal/30 text-tagx-teal border border-tagx-teal/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md">
-            <i data-lucide="file-spreadsheet" class="w-4 h-4 text-tagx-gold"></i>
-            <span>Export Inquiries (Excel/CSV)</span>
+            <i data-lucide="download" class="w-4 h-4 text-tagx-gold"></i>
+            <span>Export Inquiries</span>
           </button>
           
           <button onclick="exportWaitlistToCSV()" class="px-3.5 py-2 rounded-xl bg-tagx-rose/20 hover:bg-tagx-rose/30 text-tagx-rose border border-tagx-rose/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md">
             <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Export VIP Waitlist</span>
+            <span>Export Waitlist</span>
           </button>
 
           <button onclick="lockSecretVault()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono font-bold transition-colors flex items-center gap-1.5">
@@ -909,17 +914,23 @@
           <div id="metric-waitlist-count" class="font-display font-black text-2xl text-tagx-rose mt-0.5">0</div>
         </div>
         <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
-          <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Storage Architecture</div>
-          <div class="font-display font-bold text-sm text-tagx-gold mt-1.5">Zero-Backend LocalDB</div>
+          <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Cloud Spreadsheet</div>
+          <a href="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm text-emerald-400 hover:underline mt-1.5 flex items-center gap-1.5">
+            <span>Google Sheets</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400"></i>
+          </a>
         </div>
         <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
-          <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Spreadsheet Engine</div>
-          <div class="font-display font-bold text-sm text-tagx-cream mt-1.5">Native .CSV / Excel</div>
+          <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Active Sheet Sync</div>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-display font-bold text-xs text-tagx-cream truncate" title="TagX informachions from web site">TagX Live Cloud Vault</span>
+          </div>
         </div>
       </div>
 
       <!-- Tab Switcher Navigation -->
-      <div class="flex items-center gap-2 border-b border-white/10 pb-3 mb-4">
+      <div class="flex items-center gap-2 border-b border-white/10 pb-3 mb-4 flex-wrap">
         <button id="tab-btn-inquiries" onclick="switchVaultTab('inquiries')" class="px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tagx-teal/20 text-tagx-teal border border-tagx-teal/40 transition-all flex items-center gap-2">
           <i data-lucide="mail" class="w-3.5 h-3.5"></i>
           <span>Client Inquiries & Briefs</span>
@@ -928,11 +939,20 @@
           <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
           <span>Product VIP Waitlist</span>
         </button>
+        <button id="tab-btn-gsheet" onclick="switchVaultTab('gsheet')" class="px-4 py-2 rounded-xl text-xs font-mono font-bold bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2">
+          <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Live Google Sheet</span>
+          <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">Cloud</span>
+        </button>
         
-        <div class="ml-auto flex items-center gap-2">
+        <div class="ml-auto flex items-center gap-2 flex-wrap">
+          <button onclick="copyDataForGoogleSheet()" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 text-[11px] font-mono font-bold transition-colors flex items-center gap-1.5" title="Copy all inquiries and waitlists formatted for Google Sheet (TSV format)">
+            <i data-lucide="clipboard-copy" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Copy for Google Sheet</span>
+          </button>
           <button onclick="seedSampleVaultData()" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-mono transition-colors flex items-center gap-1.5" title="Generate test submissions">
             <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-tagx-gold"></i>
-            <span>Load Sample Data</span>
+            <span>Load Sample</span>
           </button>
           <button onclick="clearVaultData()" class="px-3 py-1.5 rounded-lg bg-tagx-rose/15 hover:bg-tagx-rose/25 text-tagx-rose text-[11px] font-mono font-bold transition-colors flex items-center gap-1.5">
             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
@@ -979,6 +999,62 @@
               <!-- Populated by JS -->
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Live Cloud Google Sheet Embed & Integration -->
+      <div id="vault-tab-gsheet" class="flex-grow overflow-y-auto custom-scrollbar hidden">
+        <div class="rounded-2xl border border-white/10 bg-slate-950/90 p-4 sm:p-5 flex flex-col gap-4">
+          <!-- Google Sheet Header Ribbon -->
+          <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold">
+                <i data-lucide="file-spreadsheet" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-white text-sm flex items-center gap-2">
+                  <span>TagX informachions from web site</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Active Google Sheet</span>
+                </h4>
+                <p class="text-xs text-slate-400 font-mono">Sheet ID: 15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+              <button onclick="copyDataForGoogleSheet()" class="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5">
+                <i data-lucide="clipboard-copy" class="w-3.5 h-3.5"></i>
+                <span>1-Click Copy All Rows</span>
+              </button>
+              <a href="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5">
+                <i data-lucide="external-link" class="w-3.5 h-3.5 text-tagx-teal"></i>
+                <span>Open Full Sheet (Edit Mode) ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Live Embedded Google Sheet Iframe -->
+          <div class="relative w-full h-[480px] rounded-xl overflow-hidden border border-white/10 bg-slate-900">
+            <iframe 
+              src="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/htmlembed?widget=true" 
+              class="w-full h-full border-0"
+              title="TagX Live Google Spreadsheet"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <!-- Instructions & 1-Click Sync Guide -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-white/10 text-xs font-mono text-slate-300 space-y-2">
+            <div class="text-tagx-teal font-bold flex items-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4 text-tagx-gold"></i>
+              <span>How to Sync Website Submissions to this Google Sheet:</span>
+            </div>
+            <p class="leading-relaxed">
+              1. <strong>Instant 1-Click Sync:</strong> Click <span class="text-emerald-400 font-bold">"1-Click Copy All Rows"</span> above &rarr; Open your Google Sheet &rarr; Click Cell <strong>A1</strong> and press <strong>Ctrl + V</strong>. All columns (Timestamp, Client Name, Email, Service, Scope) will format automatically into neat spreadsheet rows!
+            </p>
+            <p class="leading-relaxed">
+              2. <strong>Direct Cloud Access:</strong> Bookmark or open directly via <a href="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-emerald-400 underline font-bold">Google Sheets Link</a> anytime.
+            </p>
+          </div>
         </div>
       </div>
 
