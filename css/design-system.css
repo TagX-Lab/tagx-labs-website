@@ -5,17 +5,17 @@
    - #F3ECC2 (Warm Sand Cream White - Crisp Text & Soft Highlights)
    - #E8505B (Vibrant Coral Crimson Red - Secondary Accent & Warm Glow)
    - #F9D56E (Warm Sunny Gold Yellow - Amber Telemetry & Energy Accents)
-   Default: Pure Linear/Stripe/Apple 2026 Light Mode with Instant Dark Mode Toggle
+   Default: Studio Grade Modern Light Mode (Linear / Stripe / Apple 2026 Style)
    ========================================================================== */
 
-:root, html.light {
+:root {
   /* Official TAGX Labs™ Core Brand Palette */
   --tagx-teal: #14B1AB;            /* rgb(20, 177, 171)  */
   --tagx-cream: #F3ECC2;           /* rgb(243, 236, 194) */
   --tagx-rose: #E8505B;            /* rgb(232, 80, 91)   */
   --tagx-gold: #F9D56E;            /* rgb(249, 213, 110) */
 
-  /* Light Surface Hues (Stripe/Linear/Apple Style) */
+  /* Pure Light Surface Hues (Stripe / Linear / Apple 2026 Style) */
   --bg-dark: #f8fafc;              /* Soft luminous pearl slate */
   --bg-surface: #ffffff;           /* Elevated pristine white */
   --bg-card: rgba(255, 255, 255, 0.88);
@@ -59,25 +59,6 @@
   --radius-2xl: 2rem;
 }
 
-html.dark {
-  /* Derived Cyber Dark Surface Hues */
-  --bg-dark: #070e0d;              /* Deep obsidian mineral */
-  --bg-surface: #0e1917;           /* Elevated surface */
-  --bg-card: rgba(14, 25, 23, 0.82);
-  --bg-card-hover: rgba(22, 38, 35, 0.94);
-
-  --color-light: #F3ECC2;
-
-  --text-primary: #F3ECC2;
-  --text-secondary: #ded7ae;
-  --text-muted: #96aa9c;
-
-  --border-subtle: rgba(20, 177, 171, 0.18);
-  --border-highlight: rgba(20, 177, 171, 0.5);
-  --border-rose: rgba(232, 80, 91, 0.45);
-  --border-gold: rgba(249, 213, 110, 0.45);
-}
-
 /* Reset & Core Setup */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -91,12 +72,6 @@ html {
   font-family: var(--font-sans);
   background-color: #f8fafc;
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-html.dark {
-  color-scheme: dark;
-  background-color: #030706;
 }
 
 body {
@@ -114,18 +89,6 @@ body {
   color: #0f172a !important;
   min-height: 100vh;
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-html.dark body {
-  background-color: #030706 !important;
-  background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(20, 177, 171, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 90% 40%, rgba(232, 80, 91, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 10% 70%, rgba(20, 177, 171, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(249, 213, 110, 0.12) 0%, transparent 60%),
-    linear-gradient(180deg, #030706 0%, #06110e 30%, #080f14 60%, #030706 100%) !important;
-  color: #F3ECC2 !important;
 }
 
 /* Typography Helpers */
@@ -137,11 +100,6 @@ html.dark body {
 .bg-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   opacity: 0.03;
-  transition: opacity 0.3s ease;
-}
-
-html.dark .bg-noise {
-  opacity: 0.05;
 }
 
 /* Cyber Grid & Ambient Scene Background Layers */
@@ -159,12 +117,6 @@ html.dark .bg-noise {
   transition: opacity 0.3s ease;
 }
 
-html.dark .cyber-grid-layer {
-  background-image: 
-    linear-gradient(to right, rgba(20, 177, 171, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 177, 171, 0.08) 1px, transparent 1px);
-}
-
 .cyber-dot-matrix {
   position: fixed;
   inset: 0;
@@ -175,12 +127,6 @@ html.dark .cyber-grid-layer {
   mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 80%);
   opacity: 0.45;
-  transition: opacity 0.3s ease;
-}
-
-html.dark .cyber-dot-matrix {
-  background-image: radial-gradient(rgba(243, 236, 194, 0.15) 1px, transparent 1px);
-  opacity: 0.6;
 }
 
 /* Luminous Aurora Gradient Orbs (Floating Kinetic Background) */
@@ -199,13 +145,6 @@ html.dark .cyber-dot-matrix {
   pointer-events: none;
   mix-blend-mode: multiply;
   opacity: 0.28;
-  transition: opacity 0.3s ease, filter 0.3s ease;
-}
-
-html.dark .aurora-orb {
-  filter: blur(100px);
-  mix-blend-mode: screen;
-  opacity: 1;
 }
 
 .aurora-orb-teal {
@@ -247,13 +186,6 @@ html.dark .aurora-orb {
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(15, 23, 42, 0.09);
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 4px 6px -2px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-html.dark .glass-nav {
-  background: rgba(6, 14, 12, 0.78);
-  border: 1px solid rgba(20, 177, 171, 0.3);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(243, 236, 194, 0.15);
 }
 
 .glass-card {
@@ -265,7 +197,7 @@ html.dark .glass-nav {
     0 10px 25px -5px rgba(15, 23, 42, 0.05),
     0 4px 6px -2px rgba(15, 23, 42, 0.02),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
@@ -277,31 +209,9 @@ html.dark .glass-nav {
   transform: translateY(-3px);
 }
 
-html.dark .glass-card {
-  background: linear-gradient(135deg, rgba(12, 24, 21, 0.78) 0%, rgba(7, 15, 13, 0.88) 100%);
-  border: 1px solid rgba(20, 177, 171, 0.22);
-  box-shadow: 
-    0 16px 36px -12px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 0 rgba(243, 236, 194, 0.12),
-    inset 0 0 20px 0 rgba(20, 177, 171, 0.03);
-}
-
-html.dark .glass-card:hover {
-  border-color: rgba(20, 177, 171, 0.65);
-  box-shadow: 
-    0 24px 48px -12px rgba(0, 0, 0, 0.85),
-    0 0 35px rgba(20, 177, 171, 0.22),
-    inset 0 1px 0 0 rgba(243, 236, 194, 0.25);
-}
-
 /* Hero Gradient Overlay */
 .hero-gradient-overlay {
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.05) 0%, rgba(248, 250, 252, 0.4) 65%, rgba(248, 250, 252, 0.95) 100%);
-  transition: background 0.3s ease;
-}
-
-html.dark .hero-gradient-overlay {
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 /* TAGX Signature Gradient Buttons (#14B1AB -> #E8505B -> #F9D56E) */
@@ -327,28 +237,12 @@ html.dark .hero-gradient-overlay {
   transform: scale(0.96);
 }
 
-html.dark .btn-primary-gradient {
-  color: #050b0a !important;
-  text-shadow: none;
-  border: 1px solid rgba(243, 236, 194, 0.6);
-}
-
-html.dark .btn-primary-gradient:hover {
-  color: #000000 !important;
-}
-
 /* 100% Solid & Ultra-Visible Typography Styles */
 .text-hero-title-main {
   color: #0F172A !important;
   font-weight: 900 !important;
   text-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
   filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.06));
-}
-
-html.dark .text-hero-title-main {
-  color: #FFFFFF !important;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 1);
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95));
 }
 
 .text-hero-title-gradient {
@@ -361,24 +255,10 @@ html.dark .text-hero-title-main {
   filter: drop-shadow(0 2px 12px rgba(20, 177, 171, 0.25));
 }
 
-html.dark .text-hero-title-gradient {
-  color: #14B1AB !important;
-  background: linear-gradient(90deg, #14B1AB 0%, #E8505B 48%, #F9D56E 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 1)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 40px rgba(20, 177, 171, 0.5));
-}
-
 .text-hero-subtitle {
   color: #334155 !important;
   font-weight: 500 !important;
   text-shadow: none;
-}
-
-html.dark .text-hero-subtitle {
-  color: #F3ECC2 !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, 1);
 }
 
 /* Custom Scrollbar */
@@ -391,17 +271,9 @@ html.dark .text-hero-subtitle {
   background: #f1f5f9;
 }
 
-html.dark ::-webkit-scrollbar-track {
-  background: #070e0d;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #1e332f;
 }
 
 ::-webkit-scrollbar-thumb:hover {

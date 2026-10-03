@@ -75,33 +75,12 @@
   screenGlowLight.position.set(0, 2.5, 6);
   masterGroup.add(screenGlowLight);
 
-  // Dynamic Theme Adaptive Lighting (Light Mode: Clean studio metal sheen / Dark Mode: Cyber contrast)
-  function applyThemeTo3DScene(theme) {
-    const isDark = theme === 'dark';
-    if (isDark) {
-      ambientLight.color.setHex(0x060f11);
-      ambientLight.intensity = 2.8;
-      pointLight1.intensity = 5.5;
-      pointLight2.intensity = 5.0;
-      topGlowLight.intensity = 3.8;
-    } else {
-      ambientLight.color.setHex(0xd5e6e2);
-      ambientLight.intensity = 2.2;
-      pointLight1.intensity = 6.2;
-      pointLight2.intensity = 5.5;
-      topGlowLight.intensity = 4.2;
-    }
-  }
-
-  window.addEventListener('tagx-theme-changed', (e) => {
-    if (e.detail && e.detail.theme) {
-      applyThemeTo3DScene(e.detail.theme);
-    }
-  });
-
-  // Initial theme lighting setup
-  const initialIsDark = document.documentElement.classList.contains('dark');
-  applyThemeTo3DScene(initialIsDark ? 'dark' : 'light');
+  // Studio Light Mode Lighting (Clean metallic sheen & vibrant reflections)
+  ambientLight.color.setHex(0xd5e6e2);
+  ambientLight.intensity = 2.2;
+  pointLight1.intensity = 6.2;
+  pointLight2.intensity = 5.5;
+  topGlowLight.intensity = 4.2;
 
   // =========================================================================
   // 4. PROCEDURAL REAL-TIME GREEN & BLACK HACKER SCREEN ENGINE

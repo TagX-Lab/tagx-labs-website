@@ -5,8 +5,7 @@
    - #14B1AB (Ocean Cyan Teal)
    - #F3ECC2 (Cream Sand White)
    - #E8505B (Coral Crimson Red)
-   - #F9D56E (Warm Sunny Gold)
-   Default: Pure Linear/Stripe/Apple 2026 Light Mode with Instant Dark Mode Toggle
+   Default: Studio Grade Modern Light Mode (Linear / Stripe / Apple 2026 Style)
    ========================================================================== */
 
 /* Layout Containers & Grids */
@@ -431,64 +430,49 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 /* ==========================================================================
-   1. BULLETPROOF LIGHT MODE ENGINE (OVERRIDING ALL INJECTED TAILWIND STYLES)
+   1. STUDIO LIGHT MODE ENGINE (100% LIGHT MODE DESIGN SYSTEM)
    ========================================================================== */
-html:not(.dark),
-html.light {
-  color-scheme: light;
-}
 
-/* Typography in Light Mode */
-html:not(.dark) .text-white,
-html.light .text-white,
-html:not(.dark) .text-slate-100,
-html.light .text-slate-100 {
+/* Typography */
+.text-white,
+.text-slate-100 {
   color: #0F172A !important;
 }
 
-html:not(.dark) .text-slate-200,
-html.light .text-slate-200 {
+.text-slate-200 {
   color: #1E293B !important;
 }
 
-html:not(.dark) .text-slate-300,
-html.light .text-slate-300 {
+.text-slate-300 {
   color: #334155 !important;
 }
 
-html:not(.dark) .text-slate-400,
-html.light .text-slate-400 {
+.text-slate-400 {
   color: #64748B !important;
 }
 
-html:not(.dark) .text-slate-500,
-html.light .text-slate-500 {
+.text-slate-500 {
   color: #94A3B8 !important;
 }
 
-html:not(.dark) .text-tagx-cream,
-html.light .text-tagx-cream {
+.text-tagx-cream {
   color: #B45309 !important;
 }
 
-html:not(.dark) .text-tagx-gold,
-html.light .text-tagx-gold {
+.text-tagx-gold {
   color: #D97706 !important;
 }
 
-html:not(.dark) .text-tagx-light,
-html.light .text-tagx-light {
+.text-tagx-light {
   color: #0F172A !important;
 }
 
-/* Surfaces & Cards in Light Mode */
-html:not(.dark) .bg-dark,
-html.light .bg-dark {
+/* Surfaces & Cards */
+.bg-dark {
   background-color: transparent !important;
 }
 
-html:not(.dark) .glass-nav,
-html.light .glass-nav {
+.glass-nav {
   background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
@@ -496,8 +480,7 @@ html.light .glass-nav {
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
-html:not(.dark) .glass-card,
-html.light .glass-card {
+.glass-card {
   background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -505,175 +488,125 @@ html.light .glass-card {
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02), inset 0 1px 0 0 rgba(255, 255, 255, 1) !important;
 }
 
-html:not(.dark) .glass-card:hover,
-html.light .glass-card:hover {
+.glass-card:hover {
   border-color: rgba(20, 177, 171, 0.55) !important;
   box-shadow: 0 20px 35px -10px rgba(20, 177, 171, 0.18), 0 0 25px rgba(20, 177, 171, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 1) !important;
 }
 
-html:not(.dark) .bg-slate-950,
-html:not(.dark) .bg-slate-950\/60,
-html:not(.dark) .bg-slate-950\/80,
-html:not(.dark) .bg-slate-950\/85,
-html:not(.dark) .bg-slate-950\/90,
-html:not(.dark) .bg-slate-950\/95,
-html:not(.dark) .bg-slate-900,
-html:not(.dark) .bg-slate-900\/80,
-html:not(.dark) .bg-slate-900\/95,
-html.light .bg-slate-950,
-html.light .bg-slate-950\/60,
-html.light .bg-slate-950\/80,
-html.light .bg-slate-950\/85,
-html.light .bg-slate-950\/90,
-html.light .bg-slate-950\/95,
-html.light .bg-slate-900,
-html.light .bg-slate-900\/80,
-html.light .bg-slate-900\/95 {
+.bg-slate-950,
+.bg-slate-950\/60,
+.bg-slate-950\/80,
+.bg-slate-950\/85,
+.bg-slate-950\/90,
+.bg-slate-950\/95,
+.bg-slate-900,
+.bg-slate-900\/80,
+.bg-slate-900\/95 {
   background-color: rgba(255, 255, 255, 0.92) !important;
 }
 
-html:not(.dark) .bg-white\/5,
-html:not(.dark) .bg-white\/10,
-html:not(.dark) .bg-white\/15,
-html:not(.dark) .bg-white\/20,
-html:not(.dark) .bg-white\/\[0\.02\],
-html:not(.dark) .bg-white\/\[0\.03\],
-html:not(.dark) .bg-white\/\[0\.04\],
-html:not(.dark) .bg-white\/\[0\.05\],
-html.light .bg-white\/5,
-html.light .bg-white\/10,
-html.light .bg-white\/15,
-html.light .bg-white\/20,
-html.light .bg-white\/\[0\.02\],
-html.light .bg-white\/\[0\.03\],
-html.light .bg-white\/\[0\.04\],
-html.light .bg-white\/\[0\.05\] {
+.bg-white\/5,
+.bg-white\/10,
+.bg-white\/15,
+.bg-white\/20,
+.bg-white\/\[0\.02\],
+.bg-white\/\[0\.03\],
+.bg-white\/\[0\.04\],
+.bg-white\/\[0\.05\] {
   background-color: rgba(15, 23, 42, 0.04) !important;
 }
 
-html:not(.dark) .bg-black\/20,
-html:not(.dark) .bg-black\/40,
-html:not(.dark) .bg-black\/60,
-html:not(.dark) .bg-black\/70,
-html.light .bg-black\/20,
-html.light .bg-black\/40,
-html.light .bg-black\/60,
-html.light .bg-black\/70 {
+.bg-black\/20,
+.bg-black\/40,
+.bg-black\/60,
+.bg-black\/70 {
   background-color: rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Borders in Light Mode */
-html:not(.dark) .border-white\/5,
-html:not(.dark) .border-white\/10,
-html:not(.dark) .border-white\/15,
-html:not(.dark) .border-white\/20,
-html:not(.dark) .border-white\/30,
-html:not(.dark) .border-white\/40,
-html.light .border-white\/5,
-html.light .border-white\/10,
-html.light .border-white\/15,
-html.light .border-white\/20,
-html.light .border-white\/30,
-html.light .border-white\/40 {
+/* Borders */
+.border-white\/5,
+.border-white\/10,
+.border-white\/15,
+.border-white\/20,
+.border-white\/30,
+.border-white\/40 {
   border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-html:not(.dark) .divide-white\/5 > * + *,
-html.light .divide-white\/5 > * + * {
+.divide-white\/5 > * + * {
   border-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-/* Hovers in Light Mode */
-html:not(.dark) .hover\:text-white:hover,
-html.light .hover\:text-white:hover,
-html:not(.dark) .group:hover .group-hover\:text-white,
-html.light .group:hover .group-hover\:text-white {
+/* Hovers */
+.hover\:text-white:hover,
+.group:hover .group-hover\:text-white {
   color: #0F172A !important;
 }
 
-html:not(.dark) .hover\:bg-white\/10:hover,
-html.light .hover\:bg-white\/10:hover {
+.hover\:bg-white\/10:hover {
   background-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-html:not(.dark) .hover\:bg-white\/20:hover,
-html.light .hover\:bg-white\/20:hover {
+.hover\:bg-white\/20:hover {
   background-color: rgba(15, 23, 42, 0.12) !important;
 }
 
-html:not(.dark) .hover\:border-white\/40:hover,
-html.light .hover\:border-white\/40:hover {
+.hover\:border-white\/40:hover {
   border-color: rgba(15, 23, 42, 0.3) !important;
 }
 
-html:not(.dark) .group:hover .group-hover\:text-tagx-gold,
-html.light .group:hover .group-hover\:text-tagx-gold {
+.group:hover .group-hover\:text-tagx-gold {
   color: #D97706 !important;
 }
 
-/* Form Controls in Light Mode */
-html:not(.dark) input,
-html:not(.dark) textarea,
-html:not(.dark) select,
-html.light input,
-html.light textarea,
-html.light select {
+/* Form Controls */
+input,
+textarea,
+select {
   font-family: inherit;
   color: #0F172A !important;
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
 }
 
-html:not(.dark) input::placeholder,
-html:not(.dark) textarea::placeholder,
-html.light input::placeholder,
-html.light textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #94A3B8 !important;
 }
 
-html:not(.dark) input:focus,
-html:not(.dark) textarea:focus,
-html.light input:focus,
-html.light textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: #14B1AB !important;
   box-shadow: 0 0 0 3px rgba(20, 177, 171, 0.15) !important;
 }
 
-/* Modals & Dialogs in Light Mode */
-html:not(.dark) #cmd-modal,
-html:not(.dark) #secret-vault-modal,
-html.light #cmd-modal,
-html.light #secret-vault-modal {
+/* Modals & Dialogs */
+#cmd-modal,
+#secret-vault-modal {
   background-color: rgba(15, 23, 42, 0.5) !important;
 }
 
-html:not(.dark) #vault-login-view,
-html:not(.dark) #vault-dashboard-view,
-html:not(.dark) #cmd-modal .glass-card,
-html.light #vault-login-view,
-html.light #vault-dashboard-view,
-html.light #cmd-modal .glass-card {
+#vault-login-view,
+#vault-dashboard-view,
+#cmd-modal .glass-card {
   background-color: #ffffff !important;
   border-color: rgba(20, 177, 171, 0.35) !important;
   box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.25) !important;
 }
 
-html:not(.dark) table thead,
-html.light table thead {
+table thead {
   background-color: #f1f5f9 !important;
   border-color: rgba(15, 23, 42, 0.1) !important;
   color: #334155 !important;
 }
 
-html:not(.dark) table tbody tr:hover,
-html.light table tbody tr:hover {
+table tbody tr:hover {
   background-color: rgba(20, 177, 171, 0.06) !important;
 }
 
-/* Toasts in Light Mode */
-html:not(.dark) .toast-item,
-html.light .toast-item {
+/* Toasts */
+.toast-item {
   background: rgba(255, 255, 255, 0.96) !important;
   border: 1px solid rgba(20, 177, 171, 0.4) !important;
   backdrop-filter: blur(16px) !important;
@@ -691,159 +624,29 @@ html.light .toast-item {
 }
 
 /* ==========================================================================
-   2. HACKER TERMINAL CARD (ALWAYS CRISP DARK CONSOLE ON BOTH MODES)
+   2. HACKER TERMINAL CARD (CRISP HIGH-CONTRAST CONSOLE)
    ========================================================================== */
-.terminal-card,
-html:not(.dark) .terminal-card,
-html.light .terminal-card {
+.terminal-card {
   background: #060e0d !important;
   border-color: rgba(20, 177, 171, 0.3) !important;
   color: #F3ECC2 !important;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4) !important;
 }
 
-.terminal-card .text-white,
-html:not(.dark) .terminal-card .text-white,
-html.light .terminal-card .text-white {
+.terminal-card .text-white {
   color: #F3ECC2 !important;
 }
 
 .terminal-card .text-slate-200,
-.terminal-card .text-slate-300,
-html:not(.dark) .terminal-card .text-slate-200,
-html:not(.dark) .terminal-card .text-slate-300,
-html.light .terminal-card .text-slate-200,
-html.light .terminal-card .text-slate-300 {
+.terminal-card .text-slate-300 {
   color: #ded7ae !important;
 }
 
-.terminal-card .text-slate-400,
-html:not(.dark) .terminal-card .text-slate-400,
-html.light .terminal-card .text-slate-400 {
+.terminal-card .text-slate-400 {
   color: #96aa9c !important;
 }
 
 .terminal-card .border-white\/10,
-.terminal-card .border-white\/15,
-html:not(.dark) .terminal-card .border-white\/10,
-html:not(.dark) .terminal-card .border-white\/15,
-html.light .terminal-card .border-white\/10,
-html.light .terminal-card .border-white\/15 {
+.terminal-card .border-white\/15 {
   border-color: rgba(243, 236, 194, 0.1) !important;
-}
-
-/* ==========================================================================
-   3. CYBER DARK MODE RULES (TRIGGERED BY html.dark)
-   ========================================================================== */
-html.dark {
-  color-scheme: dark;
-}
-
-html.dark .text-white { color: #F3ECC2 !important; }
-html.dark .text-slate-100 { color: #F3ECC2 !important; }
-html.dark .text-slate-200 { color: #ded7ae !important; }
-html.dark .text-slate-300 { color: #cfc698 !important; }
-html.dark .text-slate-400 { color: #9bb0a3 !important; }
-html.dark .text-slate-500 { color: #6a7f73 !important; }
-html.dark .text-tagx-cream { color: #F3ECC2 !important; }
-html.dark .text-tagx-gold { color: #F9D56E !important; }
-html.dark .text-tagx-light { color: #F3ECC2 !important; }
-
-html.dark .glass-nav {
-  background: rgba(6, 14, 12, 0.78) !important;
-  border: 1px solid rgba(20, 177, 171, 0.3) !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(243, 236, 194, 0.15) !important;
-}
-
-html.dark .glass-card {
-  background: linear-gradient(135deg, rgba(12, 24, 21, 0.78) 0%, rgba(7, 15, 13, 0.88) 100%) !important;
-  border: 1px solid rgba(20, 177, 171, 0.22) !important;
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(243, 236, 194, 0.12), inset 0 0 20px 0 rgba(20, 177, 171, 0.03) !important;
-}
-
-html.dark .glass-card:hover {
-  border-color: rgba(20, 177, 171, 0.65) !important;
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 35px rgba(20, 177, 171, 0.22), inset 0 1px 0 0 rgba(243, 236, 194, 0.25) !important;
-}
-
-html.dark .bg-slate-950 { background-color: rgba(4, 9, 8, 0.8) !important; }
-html.dark .bg-slate-950\/60 { background-color: rgba(6, 14, 12, 0.6) !important; }
-html.dark .bg-slate-950\/80 { background-color: rgba(6, 14, 12, 0.58) !important; }
-html.dark .bg-slate-950\/85 { background-color: rgba(6, 14, 12, 0.65) !important; }
-html.dark .bg-slate-950\/90 { background-color: rgba(6, 14, 12, 0.72) !important; }
-html.dark .bg-slate-950\/95 { background-color: rgba(6, 14, 12, 0.82) !important; }
-html.dark .bg-slate-900 { background-color: rgba(14, 25, 23, 0.96) !important; }
-html.dark .bg-slate-900\/80 { background-color: rgba(14, 25, 23, 0.82) !important; }
-html.dark .bg-slate-900\/95 { background-color: rgba(14, 25, 23, 0.96) !important; }
-
-html.dark .bg-white\/5 { background-color: rgba(243, 236, 194, 0.05) !important; }
-html.dark .bg-white\/10 { background-color: rgba(243, 236, 194, 0.1) !important; }
-html.dark .bg-white\/15 { background-color: rgba(243, 236, 194, 0.15) !important; }
-html.dark .bg-white\/20 { background-color: rgba(243, 236, 194, 0.2) !important; }
-html.dark .bg-white\/\[0\.02\] { background-color: rgba(243, 236, 194, 0.02) !important; }
-html.dark .bg-white\/\[0\.03\] { background-color: rgba(243, 236, 194, 0.03) !important; }
-html.dark .bg-white\/\[0\.04\] { background-color: rgba(243, 236, 194, 0.04) !important; }
-html.dark .bg-white\/\[0\.05\] { background-color: rgba(243, 236, 194, 0.05) !important; }
-
-html.dark .bg-black\/20 { background-color: rgba(0, 0, 0, 0.2) !important; }
-html.dark .bg-black\/40 { background-color: rgba(0, 0, 0, 0.4) !important; }
-html.dark .bg-black\/60 { background-color: rgba(0, 0, 0, 0.6) !important; }
-html.dark .bg-black\/70 { background-color: rgba(0, 0, 0, 0.7) !important; }
-
-html.dark .border-white\/5 { border-color: rgba(243, 236, 194, 0.05) !important; }
-html.dark .border-white\/10 { border-color: rgba(243, 236, 194, 0.1) !important; }
-html.dark .border-white\/15 { border-color: rgba(243, 236, 194, 0.16) !important; }
-html.dark .border-white\/20 { border-color: rgba(243, 236, 194, 0.25) !important; }
-html.dark .border-white\/30 { border-color: rgba(243, 236, 194, 0.35) !important; }
-html.dark .border-white\/40 { border-color: rgba(243, 236, 194, 0.45) !important; }
-
-html.dark .divide-white\/5 > * + * { border-color: rgba(243, 236, 194, 0.05) !important; }
-
-html.dark .hover\:text-white:hover { color: #F3ECC2 !important; }
-html.dark .hover\:bg-white\/10:hover { background-color: rgba(243, 236, 194, 0.1) !important; }
-html.dark .hover\:bg-white\/20:hover { background-color: rgba(243, 236, 194, 0.2) !important; }
-html.dark .hover\:border-white\/40:hover { border-color: rgba(243, 236, 194, 0.4) !important; }
-html.dark .group:hover .group-hover\:text-white { color: #F3ECC2 !important; }
-html.dark .group:hover .group-hover\:text-tagx-gold { color: #F9D56E !important; }
-
-html.dark input,
-html.dark textarea,
-html.dark select {
-  color: #F3ECC2 !important;
-  background-color: rgba(4, 9, 8, 0.8) !important;
-  border-color: rgba(243, 236, 194, 0.15) !important;
-}
-
-html.dark input::placeholder,
-html.dark textarea::placeholder {
-  color: #6a7f73 !important;
-}
-
-html.dark #cmd-modal,
-html.dark #secret-vault-modal {
-  background-color: rgba(6, 14, 12, 0.85) !important;
-}
-
-html.dark #vault-login-view,
-html.dark #vault-dashboard-view,
-html.dark #cmd-modal .glass-card {
-  background-color: rgba(14, 25, 23, 0.96) !important;
-  border-color: rgba(20, 177, 171, 0.4) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
-}
-
-html.dark table thead {
-  background-color: rgba(14, 25, 23, 0.96) !important;
-  border-color: rgba(243, 236, 194, 0.15) !important;
-  color: #cfc698 !important;
-}
-
-html.dark table tbody tr:hover {
-  background-color: rgba(20, 177, 171, 0.08) !important;
-}
-
-html.dark .toast-item {
-  background: rgba(14, 25, 23, 0.96) !important;
-  color: #F3ECC2 !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(20, 177, 171, 0.2) !important;
 }

@@ -1,113 +1,20 @@
 /**
  * TAGX Labs™ — Main Application Bootstrapper
- * Theme Engine (Light / Dark), Mobile Nav, Toast Notifications, Active Nav Highlighting & Icon Mounting
+ * Crisp Studio Light Mode Engine, Mobile Nav, Toast Notifications, Active Nav Highlighting & Icon Mounting
  */
 
-// 1. Theme Engine System (Default: Crisp Modern Light Mode)
-(function initThemeEngine() {
-  function getPreferredTheme() {
-    try {
-      const savedTheme = localStorage.getItem('tagx_theme');
-      if (savedTheme === 'dark' || savedTheme === 'light') {
-        return savedTheme;
-      }
-    } catch (_) {}
-    return 'light'; // Default to light mode as requested!
-  }
-
-  window.applyTheme = function (theme, notify = false) {
-    const isDark = theme === 'dark';
-    const root = document.documentElement;
-
-    if (isDark) {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
-    }
-
-    try {
-      localStorage.setItem('tagx_theme', theme);
-    } catch (_) {}
-
-    // Update meta theme-color for mobile address bar styling
-    const metaThemeColor = document.getElementById('meta-theme-color');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', isDark ? '#090e0d' : '#f8fafc');
-    }
-
-    // Update Desktop button icon
-    const indicatorIcon = document.getElementById('theme-icon-indicator');
-    if (indicatorIcon) {
-      indicatorIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-      indicatorIcon.className = `w-4 h-4 ${isDark ? 'text-tagx-gold' : 'text-tagx-teal'}`;
-    }
-
-    // Update Mobile menu icon and text
-    const mobileIcon = document.getElementById('mobile-theme-icon');
-    const mobileText = document.getElementById('mobile-theme-text');
-    if (mobileIcon) {
-      mobileIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-    }
-    if (mobileText) {
-      mobileText.textContent = isDark ? 'Dark Mode' : 'Light Mode';
-    }
-
-    // Re-render Lucide icons
-    if (window.lucide && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons();
-    }
-
-    // Dispatch global event for 3D scene & components to adapt
-    window.dispatchEvent(new CustomEvent('tagx-theme-changed', { detail: { theme } }));
-
-    if (notify && typeof window.showToast === 'function') {
-      window.showToast(isDark ? 'Switched to Cyber Dark Mode 🌙' : 'Switched to Studio Light Mode ☀️', 'info');
-    }
-  };
-
-  window.toggleTheme = function () {
-    const isCurrentlyDark = document.documentElement.classList.contains('dark');
-    const newTheme = isCurrentlyDark ? 'light' : 'dark';
-    window.applyTheme(newTheme, true);
-  };
-})();
+// Clean up any legacy theme localStorage entry to ensure pure light mode
+try {
+  localStorage.removeItem('tagx_theme');
+} catch (_) {}
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Apply Initial Theme State
-  const initialTheme = localStorage.getItem('tagx_theme') === 'dark' ? 'dark' : 'light';
-  window.applyTheme(initialTheme, false);
-
-  // 2. Initialize Lucide SVG Icons
+  // 1. Initialize Lucide SVG Icons
   if (window.lucide) {
     window.lucide.createIcons();
   }
 
-  // 3. Attach Theme Toggle Listeners
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      window.toggleTheme();
-    });
-  }
-
-  const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
-  if (mobileThemeToggleBtn) {
-    mobileThemeToggleBtn.addEventListener('click', () => {
-      window.toggleTheme();
-    });
-  }
-
-  // Optional keyboard shortcut: Alt + T or Ctrl + Shift + L
-  window.addEventListener('keydown', (e) => {
-    if ((e.altKey && e.key.toLowerCase() === 't') || (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'l')) {
-      e.preventDefault();
-      window.toggleTheme();
-    }
-  });
-
-  // 4. Mobile Navigation Toggle
+  // 2. Mobile Navigation Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');

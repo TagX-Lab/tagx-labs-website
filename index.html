@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +10,6 @@
   <meta name="keywords" content="TAGX Labs, Software Development, 3D Web, Product Studio, Freelance Engineering, WebGL, Next-gen UI">
   <meta name="author" content="TAGX Labs™ Engineering Team">
   <meta name="theme-color" content="#f8fafc" id="meta-theme-color">
-
-  <!-- Immediate Theme Initialization (Default: Light Mode) -->
-  <script>
-    (function () {
-      try {
-        const savedTheme = localStorage.getItem('tagx_theme');
-        if (savedTheme === 'dark') {
-          document.documentElement.classList.add('dark');
-          document.documentElement.classList.remove('light');
-        } else {
-          document.documentElement.classList.remove('dark');
-          document.documentElement.classList.add('light');
-        }
-      } catch (_) {}
-    })();
-  </script>
 
   <!-- Open Graph -->
   <meta property="og:title" content="TAGX Labs™ — Next-Gen Software Products & Engineering Studio">
@@ -50,7 +34,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -136,11 +119,6 @@
           <span>Open for New Projects</span>
         </div>
 
-        <!-- Tactile Theme Toggle Button (Light / Dark Switcher) -->
-        <button id="theme-toggle-btn" class="p-2.5 rounded-xl bg-white/10 border border-white/15 text-slate-200 hover:text-white hover:bg-white/20 hover:scale-105 active:scale-95 transition-all focus:outline-none flex items-center justify-center shadow-sm" aria-label="Toggle Light and Dark Mode" title="Toggle Light / Dark Mode (machi click me!)">
-          <i data-lucide="moon" class="w-4 h-4 text-tagx-teal" id="theme-icon-indicator"></i>
-        </button>
-
         <!-- Hire Studio Quick CTA -->
         <a href="#freelance" class="btn-primary-gradient px-4 py-2 rounded-xl text-sm font-extrabold flex items-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all">
           <i data-lucide="sparkles" class="w-4 h-4"></i>
@@ -168,17 +146,6 @@
       <a href="#freelance" class="mobile-nav-link px-4 py-2.5 rounded-xl text-white hover:bg-white/10 font-semibold flex items-center gap-3">
         <i data-lucide="sparkles" class="w-4 h-4 text-tagx-rose"></i> Hire TAGX Freelance & Services
       </a>
-
-      <!-- Mobile Theme Toggle Action -->
-      <div class="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
-        <span class="text-xs font-mono font-bold flex items-center gap-2 text-white">
-          <i data-lucide="sun-moon" class="w-4 h-4 text-tagx-teal"></i> Theme Mode
-        </span>
-        <button id="mobile-theme-toggle-btn" class="px-3 py-1.5 rounded-lg bg-tagx-teal/20 text-tagx-teal border border-tagx-teal/40 text-xs font-mono font-bold flex items-center gap-1.5">
-          <i data-lucide="moon" class="w-3.5 h-3.5" id="mobile-theme-icon"></i>
-          <span id="mobile-theme-text">Light Mode</span>
-        </button>
-      </div>
 
       <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-300">
         <span>TAGX Labs™ v2.6.0 Core</span>
@@ -791,10 +758,6 @@
           <span class="flex items-center gap-2"><i data-lucide="send" class="w-4 h-4 text-tagx-teal"></i> Hire Studio Services / Submit Brief</span>
           <span class="text-slate-400 group-hover:text-tagx-teal">Jump</span>
         </a>
-        <button onclick="toggleTheme(); closeCmdModal();" class="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-white/10 cursor-pointer group text-left">
-          <span class="flex items-center gap-2"><i data-lucide="sun-moon" class="w-4 h-4 text-tagx-gold"></i> Toggle Light / Dark Mode</span>
-          <span class="text-slate-400 group-hover:text-tagx-gold font-mono text-[10px] bg-white/10 px-2 py-0.5 rounded">Theme</span>
-        </button>
       </div>
     </div>
   </div>
