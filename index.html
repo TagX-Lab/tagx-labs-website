@@ -1042,18 +1042,108 @@
             </iframe>
           </div>
 
-          <!-- Instructions & 1-Click Sync Guide -->
-          <div class="p-4 rounded-xl bg-slate-900/80 border border-white/10 text-xs font-mono text-slate-300 space-y-2">
-            <div class="text-tagx-teal font-bold flex items-center gap-2">
-              <i data-lucide="zap" class="w-4 h-4 text-tagx-gold"></i>
-              <span>How to Sync Website Submissions to this Google Sheet:</span>
+          <!-- Column Layouts & Sheet Arrangements Architecture -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Sheet 1 Card: Client Inquiries -->
+            <div class="p-4 rounded-xl border border-tagx-teal/40 bg-slate-900/90 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-display font-bold text-white text-sm flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-tagx-teal"></span>
+                    <span>Sheet 1: Client Inquiries</span>
+                  </span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-tagx-teal/20 text-tagx-teal border border-tagx-teal/40 font-bold">9 Columns</span>
+                </div>
+                <p class="text-xs text-slate-300 font-mono mb-3">Stores all "Work With Us" freelance & project briefs.</p>
+                
+                <div class="space-y-1 text-[11px] font-mono text-slate-300 bg-black/40 p-2.5 rounded-lg border border-white/10 mb-3 overflow-x-auto">
+                  <div><strong>A:</strong> Timestamp</div>
+                  <div><strong>B:</strong> Inquiry ID</div>
+                  <div><strong>C:</strong> Client / Company Name</div>
+                  <div><strong>D:</strong> Work Email</div>
+                  <div><strong>E:</strong> Service Requested</div>
+                  <div><strong>F:</strong> Project Brief / Scope</div>
+                  <div><strong>G:</strong> Estimated Budget</div>
+                  <div><strong>H:</strong> Inquiry Status (Dropdown)</div>
+                  <div><strong>I:</strong> Founder Notes</div>
+                </div>
+              </div>
+
+              <button onclick="copySheet1Headers()" class="w-full py-2 rounded-lg bg-tagx-teal/20 hover:bg-tagx-teal/30 text-tagx-teal border border-tagx-teal/40 text-xs font-mono font-bold transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Sheet 1 Headers (Paste in A1)</span>
+              </button>
             </div>
-            <p class="leading-relaxed">
-              1. <strong>Instant 1-Click Sync:</strong> Click <span class="text-emerald-400 font-bold">"1-Click Copy All Rows"</span> above &rarr; Open your Google Sheet &rarr; Click Cell <strong>A1</strong> and press <strong>Ctrl + V</strong>. All columns (Timestamp, Client Name, Email, Service, Scope) will format automatically into neat spreadsheet rows!
-            </p>
-            <p class="leading-relaxed">
-              2. <strong>Direct Cloud Access:</strong> Bookmark or open directly via <a href="https://docs.google.com/spreadsheets/d/15Wqno-yGkQ5b_bkimpTIgYuSFDYhl9sOUgGD0bOFwFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-emerald-400 underline font-bold">Google Sheets Link</a> anytime.
-            </p>
+
+            <!-- Sheet 2 Card: Product VIP Waitlist -->
+            <div class="p-4 rounded-xl border border-tagx-rose/40 bg-slate-900/90 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-display font-bold text-white text-sm flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-tagx-rose"></span>
+                    <span>Sheet 2: Product VIP Waitlist</span>
+                  </span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-tagx-rose/20 text-tagx-rose border border-tagx-rose/40 font-bold">7 Columns</span>
+                </div>
+                <p class="text-xs text-slate-300 font-mono mb-3">Stores all developer VIP early access subscribers.</p>
+                
+                <div class="space-y-1 text-[11px] font-mono text-slate-300 bg-black/40 p-2.5 rounded-lg border border-white/10 mb-3 overflow-x-auto">
+                  <div><strong>A:</strong> # (Serial No.)</div>
+                  <div><strong>B:</strong> Registration Timestamp</div>
+                  <div><strong>C:</strong> Developer / User Email</div>
+                  <div><strong>D:</strong> Access Tier</div>
+                  <div><strong>E:</strong> Invitation Status (Dropdown)</div>
+                  <div><strong>F:</strong> Platform / Source</div>
+                  <div><strong>G:</strong> Notes / Feedback</div>
+                </div>
+              </div>
+
+              <button onclick="copySheet2Headers()" class="w-full py-2 rounded-lg bg-tagx-rose/20 hover:bg-tagx-rose/30 text-tagx-rose border border-tagx-rose/40 text-xs font-mono font-bold transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Sheet 2 Headers (Paste in A1)</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Instructions & Quick Setup Actions -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-white/10 text-xs font-mono text-slate-300 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+              <div class="text-tagx-teal font-bold flex items-center gap-2">
+                <i data-lucide="zap" class="w-4 h-4 text-tagx-gold"></i>
+                <span>Choose How to Set Up Your Google Sheet:</span>
+              </div>
+              <a href="TagX_Website_Database_Template.xlsx" download="TagX_Website_Database_Template.xlsx" class="px-3 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all flex items-center gap-1.5">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Download Ready .xlsx File (Import to Sheet)</span>
+              </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] leading-relaxed">
+              <div class="p-3 rounded-lg bg-black/30 border border-white/5 space-y-1">
+                <strong class="text-white">Method 1 (Fastest — 30 seconds):</strong>
+                <p>1. Download the <strong class="text-emerald-300">TagX_Website_Database_Template.xlsx</strong> file above.</p>
+                <p>2. In your Google Sheet, click <strong class="text-white">File &gt; Import &gt; Upload</strong>.</p>
+                <p>3. Choose <em>"Replace spreadsheet"</em> &rarr; Both sheets, columns, and color styles will appear immediately!</p>
+              </div>
+
+              <div class="p-3 rounded-lg bg-black/30 border border-white/5 space-y-1">
+                <strong class="text-white">Method 2 (Live Real-Time Cloud Sync):</strong>
+                <p>1. In your Google Sheet, click <strong class="text-white">Extensions &gt; Apps Script</strong>.</p>
+                <p>2. Paste the code from <code class="text-tagx-gold">google-apps-script.js</code> &rarr; Run <code class="text-white">setupTagXSheet</code> once.</p>
+                <p>3. Click <strong class="text-white">Deploy &gt; New deployment (Web app)</strong> and save the URL below to auto-record every website click!</p>
+              </div>
+            </div>
+
+            <!-- Optional Webhook Live Input -->
+            <div class="pt-2 border-t border-white/10 flex flex-wrap items-center gap-2">
+              <span class="text-slate-400">Google Apps Script Web App URL:</span>
+              <input type="url" id="gsheet-webhook-input" placeholder="https://script.google.com/macros/s/.../exec" class="flex-grow px-3 py-1.5 rounded-lg bg-black/50 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-tagx-teal">
+              <button onclick="saveGSheetWebhook()" class="px-3.5 py-1.5 rounded-lg bg-tagx-teal hover:bg-tagx-teal/80 text-white font-bold text-xs transition-colors">
+                Save & Connect
+              </button>
+            </div>
           </div>
         </div>
       </div>

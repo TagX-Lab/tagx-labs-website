@@ -134,6 +134,25 @@ window.handleEarlyAccessSubmit = function (e) {
     }
   } catch (_) {}
 
+  // Optional Live Google Cloud Sheet Webhook Dispatch
+  try {
+    const webhookUrl = localStorage.getItem('tagx_gsheet_webhook');
+    if (webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
+      fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'waitlist',
+          email: email,
+          date: new Date().toLocaleString(),
+          tier: 'VIP Early Access 🚀',
+          source: 'Website Landing Page'
+        })
+      }).catch(err => console.warn('[TAGX GSheet Sync Error]', err));
+    }
+  } catch (_) {}
+
   setTimeout(() => {
     if (submitBtn) {
       submitBtn.disabled = false;
@@ -207,6 +226,26 @@ window.handleContactSubmit = function (e) {
       date: new Date().toLocaleString()
     });
     localStorage.setItem('tagx_inquiries', JSON.stringify(inquiries));
+  } catch (_) {}
+
+  // Optional Live Google Cloud Sheet Webhook Dispatch
+  try {
+    const webhookUrl = localStorage.getItem('tagx_gsheet_webhook');
+    if (webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
+      fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'inquiry',
+          name: name,
+          email: email,
+          projectType: projectType,
+          message: message,
+          date: new Date().toLocaleString()
+        })
+      }).catch(err => console.warn('[TAGX GSheet Sync Error]', err));
+    }
   } catch (_) {}
 
   setTimeout(() => {
@@ -632,6 +671,44 @@ window.copyDataForGoogleSheet = function () {
   } else {
     doFallbackCopy(tsvText);
   }
+};
+
+// Copy Sheet 1 Headers for Client Inquiries
+window.copySheet1Headers = function () {
+  const headers = ['Timestamp', 'Inquiry ID', 'Client / Company Name', 'Work Email', 'Service Requested', 'Project Brief / Scope', 'Estimated Budget', 'Inquiry Status', 'Founder Notes'].join('\t');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(headers).then(() => {
+      window.showToast('✔ Sheet 1 (Client Inquiries) headers copied! Paste into Cell A1 of Sheet 1.', 'success');
+    });
+  }
+};
+
+// Copy Sheet 2 Headers for Product VIP Waitlist
+window.copySheet2Headers = function () {
+  const headers = ['#', 'Registration Timestamp', 'Developer / User Email', 'Access Tier', 'Invitation Status', 'Platform / Source', 'Notes / Feedback'].join('\t');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(headers).then(() => {
+      window.showToast('✔ Sheet 2 (VIP Waitlist) headers copied! Paste into Cell A1 of Sheet 2.', 'success');
+    });
+  }
+};
+
+// Save Google Apps Script Webhook URL into localStorage
+window.saveGSheetWebhook = function () {
+  const input = document.getElementById('gsheet-webhook-input');
+  if (!input) return;
+  const val = input.value.trim();
+  if (!val) {
+    localStorage.removeItem('tagx_gsheet_webhook');
+    window.showToast('Webhook cleared.', 'info');
+    return;
+  }
+  if (!val.startsWith('https://script.google.com/')) {
+    window.showToast('⚠️ Please enter a valid Google Apps Script Web App URL.', 'error');
+    return;
+  }
+  localStorage.setItem('tagx_gsheet_webhook', val);
+  window.showToast('🎉 Google Sheets Auto-Sync Webhook saved! All future website submissions will auto-append to your sheet.', 'success');
 };
 
 // Excel / CSV Export Generators
