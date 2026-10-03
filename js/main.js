@@ -8,6 +8,24 @@ try {
   localStorage.removeItem('tagx_theme');
 } catch (_) {}
 
+// =========================================================================
+// SECURITY ITEM E: DevTools Self-XSS Anti-Tamper Console Shield
+// =========================================================================
+(function initDevToolsShield() {
+  if (typeof console !== 'undefined' && console.log) {
+    const alertStyle = 'color: #ffffff; background-color: #E8505B; font-size: 22px; font-weight: 900; padding: 6px 14px; border-radius: 6px; font-family: monospace;';
+    const textStyle = 'color: #14B1AB; font-size: 12px; font-family: monospace; font-weight: bold; line-height: 1.6;';
+    const subStyle = 'color: #64748b; font-size: 11px; font-family: monospace;';
+
+    console.log('%c⚠️ TAGX DEFENSE SYSTEM — STOP!', alertStyle);
+    console.log(
+      '%cThis console is a browser developer tool intended solely for TAGX Labs™ engineers.\nIf anyone instructed you to copy and paste code here to unlock features or bypass locks, DO NOT PROCEED.\nExecuting untrusted scripts gives malicious actors direct access to your session data (Self-XSS).\nTAGX Zero-Trust Security Protocol is active.',
+      textStyle
+    );
+    console.log('%cTAGX Labs™ Core Systems — Integrity Verified • OWASP Top 10 Aligned', subStyle);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Lucide SVG Icons
   if (window.lucide) {

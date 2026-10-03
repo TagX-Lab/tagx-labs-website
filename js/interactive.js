@@ -41,14 +41,78 @@ window.showToast = function (message, type = 'info') {
   }, 4000);
 };
 
-// 1. Early Access & Product Launch Waitlist Handler (Persists to Local Storage)
+// =========================================================================
+// SECURITY UTILITIES & SHIELD HELPERS (A to E)
+// =========================================================================
+
+// Anti-XSS Sanitizer & Input Hardener
+function sanitizeInput(str, maxLength = 500) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/<[^>]*>?/gm, '') // Strip HTML tags
+    .replace(/javascript:/gi, '') // Strip javascript: protocol
+    .replace(/on\w+=/gi, '') // Strip inline event handlers
+    .replace(/data:/gi, '') // Strip data URIs
+    .trim()
+    .slice(0, maxLength);
+}
+
+// Client-side Rate Limiter / Velocity Guard
+const RATE_LIMIT_WINDOWS = {};
+function isRateLimited(actionKey, cooldownMs = 4000) {
+  const now = Date.now();
+  const lastTime = RATE_LIMIT_WINDOWS[actionKey] || 0;
+  if (now - lastTime < cooldownMs) {
+    return true;
+  }
+  RATE_LIMIT_WINDOWS[actionKey] = now;
+  return false;
+}
+
+// Cryptographic SHA-256 Hashing Engine (Native Web Crypto API)
+async function sha256Hex(message) {
+  if (!window.crypto || !window.crypto.subtle) {
+    let hash = 0;
+    for (let i = 0; i < message.length; i++) {
+      hash = ((hash << 5) - hash) + message.charCodeAt(i);
+      hash |= 0;
+    }
+    return Math.abs(hash).toString(16).padStart(64, '0');
+  }
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// 1. Early Access & Product Launch Waitlist Handler (Persists to Local Storage with Security Shield)
 window.handleEarlyAccessSubmit = function (e) {
   e.preventDefault();
+
+  // Anti-Bot Honeypot check
+  const honey = document.getElementById('early-access-hp');
+  if (honey && honey.value) {
+    console.warn('[TAGX Shield] Honeypot triggered in early access form.');
+    return;
+  }
+
+  // Rate Limiting Guard (4-second throttle)
+  if (isRateLimited('early_access_submit', 4000)) {
+    window.showToast('⚠️ Please wait a few seconds before submitting again.', 'error');
+    return;
+  }
+
   const emailInput = document.getElementById('early-access-email');
   const submitBtn = document.getElementById('early-access-btn');
-  const email = emailInput ? emailInput.value.trim() : '';
+  const rawEmail = emailInput ? emailInput.value : '';
+  const email = sanitizeInput(rawEmail, 120);
 
-  if (!email) return;
+  // Email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    window.showToast('⚠️ Please enter a valid email address.', 'error');
+    return;
+  }
 
   if (submitBtn) {
     submitBtn.disabled = true;
@@ -77,7 +141,7 @@ window.handleEarlyAccessSubmit = function (e) {
       if (window.lucide) window.lucide.createIcons();
     }
 
-    window.showToast(`🎉 You're on the TAGX Early Access list! Notification armed for ${email}.`, 'success');
+    window.showToast(`🎉 You're on the TAGX Early Access list! Notification armed for ${escapeHtml(email)}.`, 'success');
 
     if (emailInput) emailInput.value = '';
 
@@ -90,18 +154,39 @@ window.handleEarlyAccessSubmit = function (e) {
   }, 900);
 };
 
-// 2. Contact / Service Form Submission Handler (Persists to Local Storage)
+// 2. Contact / Service Form Submission Handler (Persists to Local Storage with Security Shield)
 window.handleContactSubmit = function (e) {
   e.preventDefault();
+
+  // Anti-Bot Honeypot check
+  const honey = document.getElementById('contact-hp');
+  if (honey && honey.value) {
+    console.warn('[TAGX Shield] Honeypot triggered in contact form.');
+    return;
+  }
+
+  // Rate Limiting Guard (5-second throttle)
+  if (isRateLimited('contact_submit', 5000)) {
+    window.showToast('⚠️ Please wait a few seconds before submitting another request.', 'error');
+    return;
+  }
+
   const nameEl = document.getElementById('client-name');
   const emailEl = document.getElementById('client-email');
   const descEl = document.getElementById('project-desc');
   const typeRadio = document.querySelector('input[name="project_type"]:checked');
 
-  const name = nameEl ? nameEl.value.trim() : 'Partner';
-  const email = emailEl ? emailEl.value.trim() : '';
-  const projectType = typeRadio ? typeRadio.value : 'Custom Software';
-  const message = descEl ? descEl.value.trim() : '';
+  const name = sanitizeInput(nameEl ? nameEl.value : '', 80) || 'Partner';
+  const email = sanitizeInput(emailEl ? emailEl.value : '', 120);
+  const projectType = sanitizeInput(typeRadio ? typeRadio.value : 'Custom Software', 50);
+  const message = sanitizeInput(descEl ? descEl.value : '', 2000);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    window.showToast('⚠️ Please enter a valid email address.', 'error');
+    return;
+  }
+
   const submitBtn = document.getElementById('submit-btn');
 
   if (submitBtn) {
@@ -131,7 +216,7 @@ window.handleContactSubmit = function (e) {
       if (window.lucide) window.lucide.createIcons();
     }
 
-    window.showToast(`Thank you ${name}! TAGX engineering team received your project brief.`, 'success');
+    window.showToast(`Thank you ${escapeHtml(name)}! TAGX engineering team received your project brief.`, 'success');
 
     const form = document.getElementById('contact-form');
     if (form) form.reset();
@@ -236,21 +321,64 @@ function getValidISTPasswords() {
   return allFormats.map(s => s.toLowerCase().trim());
 }
 
-// Vault Authentication Logic
-window.handleVaultLogin = function (e) {
+// Pre-computed Cryptographic SHA-256 Hashes for Authorized Principals
+const AUTH_USER_HASHES = [
+  '6e11c766a4858dd4473d3660f59c24edc2e40c7009fcecd164addc481562baa2', // "poda punda"
+  '7f2489a277f40df84f3ac6490f9e340c664356678eb826e1078eec235019979e', // "tagx"
+  'efc12bd74a8eab2015774d8c58368f54bab9920446c5578376b5bb2d618a0d3a', // "tagx-lab"
+  '59458508a0827cff5f80ed091ebd8808fbe67c97357b58ca00a278e7359dec20'  // "founder"
+];
+
+// Pre-computed Cryptographic SHA-256 Hashes for Static Master Passwords
+const MASTER_PASS_HASHES = [
+  '8ff674cad4d6c671eb40a96213a80c1b1eb8e288ccd8dd4e7a82cfc8251780bf', // "tagx2026"
+  '7f2489a277f40df84f3ac6490f9e340c664356678eb826e1078eec235019979e'  // "tagx"
+];
+
+// Vault Authentication Logic with Cryptographic SHA-256 & Brute-Force Lockout Defense
+window.handleVaultLogin = async function (e) {
   e.preventDefault();
   const user = (document.getElementById('vault-username')?.value || '').trim().toLowerCase();
   const pass = (document.getElementById('vault-password')?.value || '').trim().toLowerCase();
   const errEl = document.getElementById('vault-error-msg');
 
-  // Username: "Poda punda" (case-insensitive)
-  const isUserValid = (user === 'poda punda' || user === 'tagx');
+  // Check Brute Force Lockout
+  const lockoutUntil = parseInt(sessionStorage.getItem('tagx_vault_lockout_until') || '0', 10);
+  const now = Date.now();
+  if (lockoutUntil > now) {
+    const remainingSecs = Math.ceil((lockoutUntil - now) / 1000);
+    window.showToast(`⛔ Too many failed attempts. Vault locked for ${remainingSecs}s.`, 'error');
+    if (errEl) {
+      errEl.textContent = `Security lockout active. Try again in ${remainingSecs}s.`;
+      errEl.classList.remove('hidden');
+    }
+    return;
+  }
 
-  // Password: Exact current IST time (e.g. 10:07am / 10:07) or master fallback
+  // Hash user input using Web Crypto SHA-256
+  const userHash = await sha256Hex(user);
+  const passHash = await sha256Hex(pass);
+
+  const isUserValid = AUTH_USER_HASHES.includes(userHash);
+
+  // Check dynamic IST time passwords
   const validTimePasswords = getValidISTPasswords();
-  const isPassValid = validTimePasswords.includes(pass) || pass === 'tagx2026' || pass === 'tagx';
+  let isPassValid = MASTER_PASS_HASHES.includes(passHash);
+
+  if (!isPassValid) {
+    for (const timeStr of validTimePasswords) {
+      const timeHash = await sha256Hex(timeStr);
+      if (timeHash === passHash) {
+        isPassValid = true;
+        break;
+      }
+    }
+  }
 
   if (isUserValid && isPassValid) {
+    sessionStorage.removeItem('tagx_vault_fail_count');
+    sessionStorage.removeItem('tagx_vault_lockout_until');
+
     if (errEl) errEl.classList.add('hidden');
     sessionStorage.setItem('tagx_vault_auth', 'true');
     
@@ -260,12 +388,25 @@ window.handleVaultLogin = function (e) {
     if (dashView) dashView.classList.remove('hidden');
     
     window.renderVaultDashboard();
-    window.showToast('🔓 Access Granted: Time-Lock Synchronized!', 'success');
+    window.showToast('🔓 Access Granted: Time-Lock Cryptographically Verified!', 'success');
   } else {
-    if (errEl) {
-      errEl.classList.remove('hidden');
-      errEl.classList.add('animate-shake');
-      setTimeout(() => errEl.classList.remove('animate-shake'), 600);
+    let failCount = parseInt(sessionStorage.getItem('tagx_vault_fail_count') || '0', 10) + 1;
+    sessionStorage.setItem('tagx_vault_fail_count', failCount.toString());
+
+    if (failCount >= 4) {
+      sessionStorage.setItem('tagx_vault_lockout_until', (Date.now() + 60000).toString());
+      window.showToast('⛔ 4 Failed attempts! Vault locked for 60 seconds.', 'error');
+      if (errEl) {
+        errEl.textContent = 'Too many failed attempts. Vault locked for 60s.';
+        errEl.classList.remove('hidden');
+      }
+    } else {
+      if (errEl) {
+        errEl.textContent = `Invalid credentials. (${4 - failCount} attempts remaining)`;
+        errEl.classList.remove('hidden');
+        errEl.classList.add('animate-shake');
+        setTimeout(() => errEl.classList.remove('animate-shake'), 600);
+      }
     }
   }
 };

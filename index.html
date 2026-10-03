@@ -8,8 +8,13 @@
   <!-- Meta & SEO -->
   <meta name="description" content="TAGX Labs™ builds cutting-edge in-house software products and provides world-class bespoke engineering, 3D web experiences, and scalable digital solutions.">
   <meta name="keywords" content="TAGX Labs, Software Development, 3D Web, Product Studio, Freelance Engineering, WebGL, Next-gen UI">
-  <meta name="author" content="TAGX Labs™ Engineering Team">
   <meta name="theme-color" content="#f8fafc" id="meta-theme-color">
+
+  <!-- Security & Anti-Hacker Shield Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; object-src 'none';">
 
   <!-- Open Graph -->
   <meta property="og:title" content="TAGX Labs™ — Next-Gen Software Products & Engineering Studio">
@@ -529,6 +534,10 @@
 
           <!-- Interactive Early Access Form -->
           <form onsubmit="handleEarlyAccessSubmit(event)" class="space-y-3 mb-6">
+            <!-- Anti-Bot Honeypot (Invisible to humans) -->
+            <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true" tabindex="-1">
+              <input type="text" id="early-access-hp" name="hp_company_field" autocomplete="off" tabindex="-1">
+            </div>
             <div>
               <label for="early-access-email" class="block text-xs font-mono text-slate-300 mb-1.5 font-bold">Developer Work Email</label>
               <input type="email" id="early-access-email" required placeholder="you@company.com or dev@domain.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-tagx-rose transition-colors">
@@ -664,6 +673,11 @@
           <p class="text-slate-300 text-xs mb-6 font-medium">Fill in your requirements and our team will get back within 12 hours with a timeline & quote.</p>
 
           <form id="contact-form" class="space-y-4" onsubmit="handleContactSubmit(event)">
+            <!-- Anti-Bot Honeypot Field (Invisible to human users) -->
+            <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true" tabindex="-1">
+              <input type="text" id="contact-hp" name="website_url_honey" autocomplete="off" tabindex="-1">
+            </div>
+
             <div>
               <label class="block text-xs font-mono text-slate-200 mb-1.5 font-bold" for="client-name">Your Name / Company</label>
               <input type="text" id="client-name" required placeholder="e.g. Alex Rivera, Acme Systems" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-tagx-teal transition-colors">
