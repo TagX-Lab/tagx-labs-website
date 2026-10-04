@@ -517,8 +517,8 @@
             <!-- Platform Tags -->
             <div class="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 mt-3 font-mono text-[10px]">
               <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white font-bold border border-white/15">Windows 11 &amp; 10</span>
-              <span class="px-2.5 py-1 rounded-lg bg-cyan-400/20 text-cyan-300 font-bold border border-cyan-400/30">35 MB Setup (.exe)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 font-semibold border border-white/10">Portable (.zip)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-cyan-400/20 text-cyan-300 font-bold border border-cyan-400/30">Native Win32 C++</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 font-semibold border border-white/10">0.02% CPU</span>
             </div>
 
             <p class="text-[11px] font-mono text-slate-400 mt-2.5">100% In-House Software IP • TAGX Labs™</p>
@@ -595,23 +595,17 @@
               </div>
             </div>
 
-            <!-- Harmonized Equal-Height Action Buttons Row (h-12 on desktop) -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 border-t border-white/10">
-              <a href="https://tagx-lab.github.io/mousepilot-website/" target="_blank" rel="noopener noreferrer" class="btn-mp-primary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm tracking-wide">
-                <i data-lucide="globe" class="w-4 h-4 text-slate-950"></i>
-                <span>Explore Website ↗</span>
+            <!-- Action Link to Official Product Website (Redirects users to visit product site to download) -->
+            <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <a href="https://tagx-lab.github.io/mousepilot-website/" target="_blank" rel="noopener noreferrer" class="btn-mp-primary h-12 px-8 rounded-xl flex items-center justify-center gap-2.5 text-sm sm:text-base tracking-wide font-extrabold shadow-xl w-full sm:w-auto">
+                <i data-lucide="globe" class="w-5 h-5 text-slate-950"></i>
+                <span>Visit Official MousePilot Website ↗</span>
               </a>
 
-              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-Setup-v1.0.0.exe" class="btn-mp-secondary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-bold shadow-md">
-                <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
-                <span>Download Setup</span>
-                <span class="text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 px-1.5 py-0.5 rounded">.exe</span>
-              </a>
-
-              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-v1.0.0-Portable.zip" class="btn-mp-tertiary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold">
-                <i data-lucide="archive" class="w-4 h-4 text-tagx-rose"></i>
-                <span>Portable (.zip)</span>
-              </a>
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-300">
+                <i data-lucide="info" class="w-4 h-4 text-cyan-400"></i>
+                <span>Installer (.exe) &amp; Portable (.zip) available on product site</span>
+              </div>
             </div>
           </div>
 
