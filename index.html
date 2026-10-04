@@ -20,6 +20,13 @@
   <meta property="og:title" content="TAGX Labs™ — Next-Gen Software Products & Engineering Studio">
   <meta property="og:description" content="Engineering high-impact proprietary software products and mission-critical client systems.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="images/tagx-logo-original-blue.png">
+
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
 
   <!-- Fonts: Space Grotesk + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,21 +95,13 @@
     <nav class="glass-nav rounded-2xl sm:rounded-full px-4 py-2 sm:px-5 sm:py-2 flex items-center justify-between sm:justify-start gap-4 sm:gap-6 border border-white/15 shadow-[0_10px_35px_rgba(15,23,42,0.08)] backdrop-blur-xl pointer-events-auto w-full sm:w-auto">
       
       <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-tagx-teal/50 rounded-lg p-1">
-        <div class="relative w-10 h-10 rounded-xl p-[1.5px] flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105" style="background: linear-gradient(135deg, #3D74B6 0%, #DC3C22 50%, #EAC8A6 100%);">
-          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center brand-logo-center">
-            <span class="font-display font-black text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-tagx-teal via-tagx-rose to-tagx-gold">TX</span>
-          </div>
-          <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #3D74B6;"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background-color: #3D74B6;"></span>
-          </span>
-        </div>
-        <div class="flex flex-col">
+      <a href="#hero" class="flex items-center group focus:outline-none focus:ring-2 focus:ring-tagx-teal/50 rounded-lg p-1 transition-all" aria-label="TAGX Labs™ Home">
+        <div class="flex flex-col justify-center">
           <div class="flex items-center gap-1.5">
-            <span class="font-display font-bold text-lg tracking-tight text-white group-hover:text-tagx-teal transition-colors">TAGX Labs<span class="text-xs text-tagx-teal align-top font-bold">™</span></span>
+            <img src="images/tagx-logo-blue.png" alt="TAGX Labs™" class="h-6 sm:h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]">
+            <span class="font-display font-extrabold text-sm tracking-tight text-tagx-teal">Labs<span class="text-[10px] text-tagx-teal align-top font-bold">™</span></span>
           </div>
-          <span class="text-[10px] font-mono tracking-widest text-slate-300 uppercase -mt-1 font-semibold">Product & Engineering</span>
+          <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase -mt-0.5 font-semibold">Product &amp; Engineering</span>
         </div>
       </a>
 
@@ -155,6 +154,7 @@
     <!-- Hero Content (Spacious, Breathable & Pristine) -->
     <div id="hero-content" class="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 text-center mt-6 sm:mt-10 md:mt-14">
       
+
       <!-- Main Headline (100% Solid & Ultra Visible) -->
       <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-7xl tracking-tight leading-[1.08] mb-10 sm:mb-12">
         <span class="text-hero-title-main">WE ENGINEER</span> <br>
@@ -833,13 +833,11 @@
         
         <!-- Brand Info -->
         <div class="md:col-span-6 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-xl p-[1.5px] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #3D74B6, #DC3C22, #EAC8A6);">
-              <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-display font-black text-xs text-tagx-teal brand-logo-center">
-                TX
-              </div>
+          <div class="flex items-center">
+            <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/70 border border-white/10 backdrop-blur-sm">
+              <img src="images/tagx-logo-white-blue.png" alt="TAGX Labs™" class="h-7 w-auto object-contain">
+              <span class="font-display font-bold text-base text-tagx-gold">Labs<span class="text-[10px] text-tagx-cream font-bold">™</span></span>
             </div>
-            <span class="font-display font-bold text-xl text-white">TAGX Labs<span class="text-xs text-tagx-gold font-bold">™</span></span>
           </div>
           <p class="text-slate-200 text-xs leading-relaxed max-w-sm font-medium">
             Next-gen engineering laboratory founded by ambitious fresher developers. Engineering proprietary in-house software products and high-performance bespoke digital solutions.
