@@ -150,6 +150,19 @@ function setupTagXSheet() {
 }
 
 /**
+ * Sanitizes input against CSV / Formula Injection (CWE-1236)
+ * Prevents malicious strings starting with =, +, -, @, or tab from executing formulas.
+ */
+function sanitizeCell(val) {
+  if (val === null || val === undefined) return '';
+  let s = String(val).trim();
+  if (/^[=\+\-@\t\r]/.test(s)) {
+    s = "'" + s;
+  }
+  return s;
+}
+
+/**
  * Real-Time HTTP POST Endpoint (Web App)
  * Receives form submissions from the TAGX Labs website and writes into the respective sheet.
  */
@@ -163,13 +176,13 @@ function doPost(e) {
       const sheet = ss.getSheetByName('Client Inquiries');
       if (sheet) {
         sheet.appendRow([
-          data.date || new Date().toLocaleString(),
-          data.id || 'TX-' + Math.floor(1000 + Math.random() * 9000),
-          data.name || 'Anonymous',
-          data.email || '',
-          data.projectType || 'Software Engineering',
-          data.message || '',
-          data.budget || 'Open / Discussion',
+          sanitizeCell(data.date || new Date().toLocaleString()),
+          sanitizeCell(data.id || 'TX-' + Math.floor(1000 + Math.random() * 9000)),
+          sanitizeCell(data.name || 'Anonymous'),
+          sanitizeCell(data.email || ''),
+          sanitizeCell(data.projectType || 'Software Engineering'),
+          sanitizeCell(data.message || ''),
+          sanitizeCell(data.budget || 'Open / Discussion'),
           'New',
           'Direct submission from website'
         ]);
@@ -180,11 +193,11 @@ function doPost(e) {
         const lastRow = sheet.getLastRow();
         sheet.appendRow([
           lastRow,
-          data.date || new Date().toLocaleString(),
-          data.email || '',
-          data.tier || 'VIP Early Access 🚀',
+          sanitizeCell(data.date || new Date().toLocaleString()),
+          sanitizeCell(data.email || ''),
+          sanitizeCell(data.tier || 'VIP Early Access 🚀'),
           'Pending Launch',
-          data.source || 'Website Form',
+          sanitizeCell(data.source || 'Website Form'),
           ''
         ]);
       }

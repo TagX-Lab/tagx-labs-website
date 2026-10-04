@@ -1,0 +1,10 @@
+# TAGX Labs™ Security Disclosure Policy
+# Reference: RFC 9116
+
+Contact: mailto:security@tagxlabs.com
+Contact: https://github.com/TagX-Lab/tagx-labs-website/security
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, ta
+Canonical: https://tagx-lab.github.io/.well-known/security.txt
+Policy: https://github.com/TagX-Lab/tagx-labs-website/security/policy
+Acknowledgments: https://github.com/TagX-Lab/tagx-labs-website/blob/main/README.md

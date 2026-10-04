@@ -1,0 +1,18 @@
+# TAGX Labs™ — Web Robots Security Policy
+User-agent: *
+Disallow: /admin/
+Disallow: /vault/
+Disallow: /api/
+Disallow: /*.xlsx$
+Disallow: /*.csv$
+Disallow: /*.json$
+
+# Friendly crawlers allow
+Allow: /
+Allow: /index.html
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Sitemap definition
+# Sitemap: https://tagxlabs.com/sitemap.xml

@@ -9,6 +9,26 @@ try {
 } catch (_) {}
 
 // =========================================================================
+// ANTI-CLICKJACKING / FRAME-BUSTING DEFENSE (OWASP Standard)
+// Prevents malicious sites from embedding TAGX Labs in an invisible iframe
+// =========================================================================
+(function initAntiClickjacking() {
+  try {
+    if (window.top !== window.self) {
+      if (window.top.location.hostname !== window.self.location.hostname) {
+        window.top.location = window.self.location;
+      }
+    }
+  } catch (_) {
+    // Cross-origin iframe trapped detected -> hide document to prevent UI redressing
+    if (document.documentElement) {
+      document.documentElement.style.display = 'none';
+    }
+    window.top.location = window.self.location;
+  }
+})();
+
+// =========================================================================
 // SECURITY ITEM E: DevTools Self-XSS Anti-Tamper Console Shield
 // =========================================================================
 (function initDevToolsShield() {

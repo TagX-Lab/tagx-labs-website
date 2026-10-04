@@ -10,11 +10,13 @@
   <meta name="keywords" content="TAGX Labs, Software Development, 3D Web, Product Studio, Freelance Engineering, WebGL, Next-gen UI">
   <meta name="theme-color" content="#3D74B6" id="meta-theme-color">
 
-  <!-- Security & Anti-Hacker Shield Headers -->
+  <!-- Enterprise Security & Anti-Hacker Shield Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; object-src 'none';">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; object-src 'none'; frame-ancestors 'none'; base-uri 'self';">
 
   <!-- Open Graph -->
   <meta property="og:title" content="TAGX Labs™ — Next-Gen Software Products & Engineering Studio">
@@ -919,8 +921,8 @@
         <div class="md:col-span-3 space-y-3 font-mono text-xs">
           <div class="font-display font-bold text-white text-sm mb-2 uppercase tracking-wider">Our Products</div>
           <div><a href="https://tagx-lab.github.io/mousepilot-website/" target="_blank" rel="noopener noreferrer" class="text-white font-bold hover:text-cyan-300 transition-colors flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> MousePilot (v1.0 Live) ↗</a></div>
-          <div><a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-Setup-v1.0.0.exe" class="text-slate-200 hover:text-tagx-gold transition-colors font-medium flex items-center gap-1.5"><i data-lucide="download" class="w-3.5 h-3.5 text-cyan-400"></i> Download Setup (.exe)</a></div>
-          <div><a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-v1.0.0-Portable.zip" class="text-slate-200 hover:text-tagx-rose transition-colors font-medium flex items-center gap-1.5"><i data-lucide="archive" class="w-3.5 h-3.5 text-tagx-rose"></i> Portable Zip Release</a></div>
+          <div><a href="https://tagx-lab.github.io/mousepilot-website/#features" target="_blank" rel="noopener noreferrer" class="text-slate-200 hover:text-cyan-300 transition-colors font-medium flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyan-400"></i> Features &amp; Safety ↗</a></div>
+          <div><a href="https://tagx-lab.github.io/mousepilot-website/#simulator" target="_blank" rel="noopener noreferrer" class="text-slate-200 hover:text-tagx-gold transition-colors font-medium flex items-center gap-1.5"><i data-lucide="activity" class="w-3.5 h-3.5 text-tagx-gold"></i> Kinematics Simulator ↗</a></div>
           <div><a href="#products" class="text-slate-300 hover:text-tagx-teal transition-colors font-medium">Future R&amp;D Pipeline</a></div>
         </div>
 
@@ -1007,10 +1009,10 @@
 
         <!-- Header Actions -->
         <div class="flex items-center gap-2.5 flex-wrap">
-          <a href="https://docs.google.com/spreadsheets/d/1AxFVMilf42lJ0nJUiV9EATb1ldwST0R2LdLFGG4UBpE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md" title="Open Google Sheet: TagX informachions from web site">
+          <button onclick="openSecureGoogleSheet()" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md" title="Open Google Sheet: TagX informachions from web site">
             <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
             <span>Live Google Sheet ↗</span>
-          </a>
+          </button>
 
           <button onclick="exportInquiriesToCSV()" class="px-3.5 py-2 rounded-xl bg-tagx-teal/20 hover:bg-tagx-teal/30 text-tagx-teal border border-tagx-teal/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md">
             <i data-lucide="download" class="w-4 h-4 text-tagx-gold"></i>
@@ -1045,10 +1047,10 @@
         </div>
         <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
           <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Cloud Spreadsheet</div>
-          <a href="https://docs.google.com/spreadsheets/d/1AxFVMilf42lJ0nJUiV9EATb1ldwST0R2LdLFGG4UBpE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm text-emerald-400 hover:underline mt-1.5 flex items-center gap-1.5">
+          <button onclick="openSecureGoogleSheet()" class="font-display font-bold text-sm text-emerald-400 hover:underline mt-1.5 flex items-center gap-1.5">
             <span>Google Sheets</span>
             <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400"></i>
-          </a>
+          </button>
         </div>
         <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
           <div class="text-[10px] font-mono text-slate-300 font-semibold uppercase">Active Sheet Sync</div>
@@ -1155,17 +1157,18 @@
                 <i data-lucide="clipboard-copy" class="w-3.5 h-3.5"></i>
                 <span>1-Click Copy All Rows</span>
               </button>
-              <a href="https://docs.google.com/spreadsheets/d/1AxFVMilf42lJ0nJUiV9EATb1ldwST0R2LdLFGG4UBpE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5">
+              <button onclick="openSecureGoogleSheet()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5">
                 <i data-lucide="external-link" class="w-3.5 h-3.5 text-tagx-teal"></i>
                 <span>Open Full Sheet (Edit Mode) ↗</span>
-              </a>
+              </button>
             </div>
           </div>
 
-          <!-- Live Embedded Google Sheet Iframe -->
+          <!-- Live Embedded Google Sheet Iframe (Loaded securely upon authentication) -->
           <div class="relative w-full h-[480px] rounded-xl overflow-hidden border border-white/10 bg-slate-900">
             <iframe 
-              src="https://docs.google.com/spreadsheets/d/1AxFVMilf42lJ0nJUiV9EATb1ldwST0R2LdLFGG4UBpE/htmlembed?widget=true" 
+              id="vault-gsheet-iframe"
+              data-src="https://docs.google.com/spreadsheets/d/1AxFVMilf42lJ0nJUiV9EATb1ldwST0R2LdLFGG4UBpE/htmlembed?widget=true" 
               class="w-full h-full border-0"
               title="TagX Live Google Spreadsheet"
               loading="lazy">

@@ -42,19 +42,30 @@ window.showToast = function (message, type = 'info') {
 };
 
 // =========================================================================
-// SECURITY UTILITIES & SHIELD HELPERS (A to E)
-// =========================================================================
+// Page load timestamp for anti-bot velocity detection
+const PAGE_LOAD_TIME = Date.now();
 
-// Anti-XSS Sanitizer & Input Hardener
+// Anti-XSS Sanitizer & Input Hardener (OWASP Compliant)
 function sanitizeInput(str, maxLength = 500) {
   if (typeof str !== 'string') return '';
   return str
     .replace(/<[^>]*>?/gm, '') // Strip HTML tags
     .replace(/javascript:/gi, '') // Strip javascript: protocol
+    .replace(/vbscript:/gi, '') // Strip vbscript: protocol
     .replace(/on\w+=/gi, '') // Strip inline event handlers
     .replace(/data:/gi, '') // Strip data URIs
     .trim()
     .slice(0, maxLength);
+}
+
+// Anti-Formula / CSV Injection Sanitizer (CWE-1236 Defense)
+function sanitizeFormula(str) {
+  if (typeof str !== 'string') return '';
+  // Neutralize formula triggers (=, +, -, @, \t, \r)
+  if (/^[=\+\-@\t\r]/.test(str)) {
+    return "'" + str;
+  }
+  return str;
 }
 
 // Client-side Rate Limiter / Velocity Guard
@@ -129,6 +140,12 @@ window.handleEarlyAccessSubmit = function (e) {
   const honey = document.getElementById('early-access-hp');
   if (honey && honey.value) {
     console.warn('[TAGX Shield] Honeypot triggered in early access form.');
+    return;
+  }
+
+  // Anti-Bot Velocity Guard (Bots submit instantaneously < 1000ms)
+  if (Date.now() - PAGE_LOAD_TIME < 1000) {
+    console.warn('[TAGX Shield] Automated bot timing violation intercepted.');
     return;
   }
 
@@ -225,6 +242,12 @@ window.handleContactSubmit = function (e) {
   const honey = document.getElementById('contact-hp');
   if (honey && honey.value) {
     console.warn('[TAGX Shield] Honeypot triggered in contact form.');
+    return;
+  }
+
+  // Anti-Bot Velocity Guard (Human users take > 2000ms to fill contact details)
+  if (Date.now() - PAGE_LOAD_TIME < 2000) {
+    console.warn('[TAGX Shield] Automated bot timing violation intercepted.');
     return;
   }
 
@@ -519,6 +542,21 @@ window.handleVaultLogin = async function (e) {
   }
 };
 
+// Secure Authenticated Google Sheet Opener (Protected in memory)
+window.openSecureGoogleSheet = function () {
+  if (sessionStorage.getItem('tagx_vault_auth') !== 'true') {
+    window.showToast('⛔ Security Alert: Executive Vault authentication required.', 'error');
+    window.openSecretVault();
+    return;
+  }
+  // Base64 decoded only in memory for authenticated founders
+  const sheetUrl = atob('aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vc3ByZWFkc2hlZXRzL2QvMUF4RlZNaWxmNDJsSjBuSlVpVjlFQVRiMWxkd1NUMFIyTGRMRkdHNFVCcEUvZWRpdD91c3A9c2hhcmluZw==');
+  const safeTab = window.open(sheetUrl, '_blank');
+  if (safeTab) {
+    safeTab.opener = null; // Anti-Reverse-Tabnabbing
+  }
+};
+
 // Render Dashboard Tables & Telemetry
 window.renderVaultDashboard = function () {
   let inquiries = [];
@@ -528,6 +566,12 @@ window.renderVaultDashboard = function () {
     inquiries = JSON.parse(localStorage.getItem('tagx_inquiries') || '[]');
     waitlist = JSON.parse(localStorage.getItem('tagx_product_waitlist') || '[]');
   } catch (_) {}
+
+  // Authenticated Lazy Load of Google Sheet Iframe
+  const gsheetIframe = document.getElementById('vault-gsheet-iframe');
+  if (gsheetIframe && gsheetIframe.dataset && gsheetIframe.dataset.src && !gsheetIframe.src) {
+    gsheetIframe.src = gsheetIframe.dataset.src;
+  }
 
   // Update Counters
   const inqCountEl = document.getElementById('metric-inquiries-count');
@@ -832,15 +876,25 @@ window.exportWaitlistToCSV = function () {
   window.showToast('📥 Exported Product VIP Waitlist to Excel (.csv)!', 'success');
 };
 
-// Helper Helpers for Data & CSV
+// Data & CSV Sanitizers (CWE-1236 Anti-Formula Injection & RFC 4180 Hardened)
 function escapeCSV(str) {
-  if (typeof str !== 'string') return `"${str}"`;
-  return `"${str.replace(/"/g, '""')}"`;
+  if (str === null || str === undefined) return '""';
+  let s = String(str);
+  // Neutralize CSV / Excel formula execution payload (=, +, -, @, \t, \r)
+  if (/^[=\+\-@\t\r]/.test(s)) {
+    s = "'" + s;
+  }
+  return `"${s.replace(/"/g, '""')}"`;
 }
 
 function escapeHtml(str) {
   if (!str) return '';
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function formatDateFile(d) {
