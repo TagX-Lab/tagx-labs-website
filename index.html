@@ -478,100 +478,137 @@
     <!-- Our Products Bento Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       
-      <!-- Bento Card 1: MousePilot Flagship Showcase (12 Cols) -->
-      <div class="lg:col-span-12 glass-card rounded-3xl border border-cyan-400/30 p-6 sm:p-10 relative overflow-hidden bg-gradient-to-br from-slate-950/95 via-slate-900/90 to-[#0e2028]/95 hover:border-tagx-teal transition-all duration-300 shadow-2xl group">
-        <!-- Ambient Cyber Glows -->
-        <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none" style="background: rgba(0, 255, 234, 0.12);"></div>
-        <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none" style="background: rgba(61, 116, 182, 0.15);"></div>
+      <!-- Bento Card 1: MousePilot Flagship Showcase (12 Cols - Elite Cyber Tactical Cockpit) -->
+      <div class="lg:col-span-12 mousepilot-card rounded-3xl p-6 sm:p-10 transition-all duration-300 group">
+        <!-- 4-Color Signature Brand Ribbon -->
+        <div class="mp-ribbon">
+          <div style="background-color: #DB1A1A;"></div>
+          <div style="background-color: #FFF6F6;"></div>
+          <div style="background-color: #8CC7C4;"></div>
+          <div style="background-color: #2C687B;"></div>
+        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <!-- Ambient Cyber Background Glows & Grid -->
+        <div class="absolute inset-0 mp-cyber-grid pointer-events-none opacity-40"></div>
+        <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none" style="background: rgba(0, 255, 234, 0.14);"></div>
+        <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none" style="background: rgba(219, 26, 26, 0.12);"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
           
           <!-- Left: Product Artwork, Badges & Platform Info -->
           <div class="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div class="relative group/logo mb-6">
-              <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-500 via-tagx-teal to-tagx-rose opacity-40 blur-xl group-hover/logo:opacity-75 transition duration-500"></div>
-              <img src="images/mousepilot-logo-512.png" alt="MousePilot Tactical Crest by TAGX Labs" class="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl object-cover border border-cyan-400/40 shadow-2xl shadow-cyan-950/80 transition-transform duration-500 group-hover/logo:scale-[1.03]">
-              <span class="absolute -top-2 -right-2 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-mono text-[10px] font-black tracking-wider uppercase shadow-lg border border-emerald-300">v1.0 LIVE</span>
+            <div class="relative group/logo">
+              <!-- Holographic ambient backing -->
+              <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-cyan-400 via-tagx-teal to-brand-crimson opacity-40 blur-xl group-hover/logo:opacity-75 transition duration-500"></div>
+              
+              <!-- Artwork Bracket Frame -->
+              <div class="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-br from-cyan-400 via-[#8CC7C4] to-[#2C687B] shadow-[0_0_35px_rgba(0,255,234,0.22)] group-hover/logo:shadow-[0_0_50px_rgba(0,255,234,0.38)] transition-all duration-500">
+                <img src="images/mousepilot-logo-512.png" alt="MousePilot Tactical Crest by TAGX Labs" class="w-full h-full object-cover rounded-[14px]">
+              </div>
+              <span class="absolute -top-2.5 -right-2.5 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-mono text-[10px] font-black tracking-wider uppercase shadow-xl border border-emerald-300">v1.0.0 LIVE</span>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
-              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white font-mono text-[10px] font-bold border border-white/15">Windows 11 &amp; 10</span>
-              <span class="px-2.5 py-1 rounded-lg bg-tagx-teal/20 text-tagx-teal font-mono text-[10px] font-bold border border-tagx-teal/40">35 MB Setup</span>
-              <span class="px-2.5 py-1 rounded-lg bg-cyan-400/20 text-cyan-300 font-mono text-[10px] font-bold border border-cyan-400/30">Portable .zip</span>
+            <!-- Live Status Sensor Capsule -->
+            <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-[11px] font-bold mt-5 shadow-inner">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Autonomous Keep-Alive • Active</span>
             </div>
 
-            <p class="text-xs font-mono text-slate-400">100% TAGX Labs™ Original IP &amp; Engineering</p>
+            <!-- Platform Tags -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 mt-3 font-mono text-[10px]">
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white font-bold border border-white/15">Windows 11 &amp; 10</span>
+              <span class="px-2.5 py-1 rounded-lg bg-cyan-400/20 text-cyan-300 font-bold border border-cyan-400/30">35 MB Setup (.exe)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 font-semibold border border-white/10">Portable (.zip)</span>
+            </div>
+
+            <p class="text-[11px] font-mono text-slate-400 mt-2.5">100% In-House Software IP • TAGX Labs™</p>
           </div>
 
           <!-- Right: Comprehensive Pitch, Features & Download Deck -->
           <div class="lg:col-span-7 flex flex-col justify-between h-full">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-3 py-1 rounded-full bg-cyan-400/15 text-cyan-300 border border-cyan-400/30 font-mono text-xs font-bold uppercase tracking-wider">Product #01</span>
-                <span class="text-slate-400 text-xs font-mono font-semibold">• Flagship Desktop Utility</span>
+              <div class="flex flex-wrap items-center gap-2 mb-2.5">
+                <span class="px-3 py-1 rounded-full bg-cyan-400/20 text-cyan-300 border border-cyan-400/40 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-300"></i> FLAGSHIP PRODUCT #01
+                </span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono text-[10px] font-bold tracking-wide">STABLE RELEASE</span>
               </div>
 
-              <h3 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight mb-1">
+              <h3 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight leading-tight mb-1">
                 MousePilot<span class="text-cyan-400">™</span>
               </h3>
-              <p class="text-tagx-gold font-mono text-sm sm:text-base font-semibold mb-4">
+              <p class="text-brand-aqua font-mono text-sm sm:text-base font-bold tracking-wide mb-4">
                 "Put your cursor on autopilot."
               </p>
 
               <p class="text-slate-200 text-sm leading-relaxed mb-6 font-medium">
-                An enterprise-grade autonomous cursor keep-alive and anti-sleep utility for Windows. Maintain continuous workplace presence and active status with zero rogue clicks. Features natural human-yield sensors and 4 mathematical kinematic motion patterns.
+                An enterprise-grade autonomous cursor keep-alive &amp; anti-sleep utility for Windows. Maintain continuous workplace presence and active status with zero rogue clicks, intelligent human takeover yield, and 4 mathematical kinematic motion patterns.
               </p>
 
-              <!-- 4 Feature Cards Grid -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-cyan-400/40 transition-colors">
-                  <div class="flex items-center gap-2 mb-1">
+              <!-- 4 Tactical Feature Tiles -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                <div class="mp-feature-tile p-3.5 rounded-2xl">
+                  <div class="flex items-center gap-2 mb-1.5">
                     <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
                     <span class="font-bold text-white text-xs">Zero Synthetic Clicks</span>
                   </div>
                   <p class="text-slate-300 text-[11px] leading-relaxed">Never generates synthetic button clicks. Zero misclicks on open forms, links, or emails.</p>
                 </div>
 
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-tagx-teal/40 transition-colors">
-                  <div class="flex items-center gap-2 mb-1">
-                    <i data-lucide="zap" class="w-4 h-4 text-tagx-teal"></i>
+                <div class="mp-feature-tile p-3.5 rounded-2xl">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <i data-lucide="zap" class="w-4 h-4 text-brand-aqua"></i>
                     <span class="font-bold text-white text-xs">Human Takeover Yield</span>
                   </div>
                   <p class="text-slate-300 text-[11px] leading-relaxed">Instantly pauses autonomous movement the exact millisecond you touch your mouse.</p>
                 </div>
 
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-tagx-rose/40 transition-colors">
-                  <div class="flex items-center gap-2 mb-1">
+                <div class="mp-feature-tile p-3.5 rounded-2xl">
+                  <div class="flex items-center gap-2 mb-1.5">
                     <i data-lucide="activity" class="w-4 h-4 text-tagx-rose"></i>
                     <span class="font-bold text-white text-xs">4 Kinematic Engines</span>
                   </div>
                   <p class="text-slate-300 text-[11px] leading-relaxed">Organic Bezier drift, Harmonic Sine Wave, Orbital Ellipse, and Micro-Jitter kinematics.</p>
                 </div>
 
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-tagx-gold/40 transition-colors">
-                  <div class="flex items-center gap-2 mb-1">
+                <div class="mp-feature-tile p-3.5 rounded-2xl">
+                  <div class="flex items-center gap-2 mb-1.5">
                     <i data-lucide="lock" class="w-4 h-4 text-tagx-gold"></i>
                     <span class="font-bold text-white text-xs">Zero Telemetry Privacy</span>
                   </div>
                   <p class="text-slate-300 text-[11px] leading-relaxed">100% offline local execution. Zero network calls, zero tracking, and tiny 0.02% CPU footprint.</p>
                 </div>
               </div>
+
+              <!-- Live Kinematics Telemetry Strip -->
+              <div class="p-3 rounded-xl bg-black/40 border border-cyan-400/25 flex flex-wrap items-center justify-between gap-3 font-mono text-xs mb-6 shadow-inner">
+                <div class="flex items-center gap-2 text-cyan-300 font-bold">
+                  <i data-lucide="radar" class="w-4 h-4 text-cyan-400 animate-spin" style="animation-duration: 6s;"></i>
+                  <span>Kinematics Mode:</span>
+                  <span class="text-white font-normal bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">Harmonic Sine Wave • 4.2 px/s</span>
+                </div>
+                <div class="flex items-center gap-3 text-slate-300 text-[11px]">
+                  <span class="text-emerald-400 flex items-center gap-1 font-semibold"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Undetectable</span>
+                  <span class="text-slate-500 hidden sm:inline">•</span>
+                  <span class="text-brand-aqua hidden sm:inline">Win32 C++ Native Hook</span>
+                </div>
+              </div>
             </div>
 
-            <!-- CTA Action Cluster -->
-            <div class="flex flex-wrap items-center gap-3 pt-5 border-t border-white/10">
-              <a href="https://tagx-lab.github.io/mousepilot-website/" target="_blank" rel="noopener noreferrer" class="btn-primary-gradient px-5 py-3 rounded-xl font-bold flex items-center gap-2 text-xs sm:text-sm shadow-xl hover:scale-105 active:scale-95 transition-all">
-                <i data-lucide="globe" class="w-4 h-4"></i>
-                <span>Explore Official Website ↗</span>
+            <!-- Harmonized Equal-Height Action Buttons Row (h-12 on desktop) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 border-t border-white/10">
+              <a href="https://tagx-lab.github.io/mousepilot-website/" target="_blank" rel="noopener noreferrer" class="btn-mp-primary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm tracking-wide">
+                <i data-lucide="globe" class="w-4 h-4 text-slate-950"></i>
+                <span>Explore Website ↗</span>
               </a>
 
-              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-Setup-v1.0.0.exe" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-bold flex items-center gap-2 text-xs sm:text-sm hover:scale-105 active:scale-95 transition-all shadow-lg">
+              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-Setup-v1.0.0.exe" class="btn-mp-secondary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-bold shadow-md">
                 <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
-                <span>Download Setup (.exe)</span>
-                <span class="text-[10px] font-mono text-slate-300 bg-black/40 px-1.5 py-0.5 rounded">35 MB</span>
+                <span>Download Setup</span>
+                <span class="text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 px-1.5 py-0.5 rounded">.exe</span>
               </a>
 
-              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-v1.0.0-Portable.zip" class="px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-medium flex items-center gap-2 text-xs transition-all">
+              <a href="https://tagx-lab.github.io/mousepilot-website/downloads/MousePilot-v1.0.0-Portable.zip" class="btn-mp-tertiary h-12 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold">
                 <i data-lucide="archive" class="w-4 h-4 text-tagx-rose"></i>
                 <span>Portable (.zip)</span>
               </a>
